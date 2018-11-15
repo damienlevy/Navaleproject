@@ -7,7 +7,7 @@ public interface Bateau {
 
 	int getID();
 	List<Point> getPosition();
-	void touche();
+	void touche(Point p);
 	boolean estCoule();
 	
 	
