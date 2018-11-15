@@ -13,24 +13,27 @@ class Case {
     boolean toucher ;
     private int idBateau; 
     
-    public Case()
+    
+    public Case(int id )
     {
-        //
+        this.toucher = false ; // par deafaut 
+        this.idBateau = id ; 
     }
     
     
     boolean estToucher()
     {
-        
-        return this.toucher=false ;
+       
+        return this.toucher=true ;
     }
     
     
-    
+    //Return the id of the Naval
     public int getidBateau()
     {
         return this.idBateau;
     }
+    
     public void setidBateau(int id )
     {
         this.idBateau= id;

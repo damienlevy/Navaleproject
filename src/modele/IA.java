@@ -9,6 +9,11 @@ package modele;
  *
  * @author trabels33u
  */
-public class IA {
+public class IA extends Joueur {
+
+    @Override
+    int getMunition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

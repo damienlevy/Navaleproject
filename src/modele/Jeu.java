@@ -4,14 +4,21 @@
  * and open the template in the editor.
  */
 package modele;
-
+import modele.bateau.Bateau;
 /**
  *
  * @author trabels33u
  */
 abstract class Jeu {
     
-    Plateau[] plateaux ; 
+   private static final int NBAT = 5 ; //nombre des bateaux 
+   private static final int NBP = 3; //nbr des joueurs 
+   
+   public Plateau[] plateaux ; 
+   
+   public Joueur[] players; 
+   
+   public Bateau[] bateaux;
     
     abstract Plateau placerBateau(); //placer les Bateaux sur le plateau 
     abstract void jouer(); //lancer le jeu 

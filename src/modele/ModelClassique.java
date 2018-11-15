@@ -10,7 +10,14 @@ package modele;
  * @author trabels33u
  */
 public class ModelClassique extends Jeu {
-
+    EpoqueFactory epoque; 
+    
+    
+    public ModelClassique(EpoqueFactory epoque)
+    {
+      this.epoque = epoque; 
+    }
+    
     @Override
    Plateau placerBateau() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
