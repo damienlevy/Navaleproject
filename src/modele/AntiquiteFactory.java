@@ -3,17 +3,47 @@
  */
 package modele;
 
+import modele.bateau.Bateau;
+import modele.bateau.antiquite.*;
+
+
 /**
  * @author levy54u
  *
  */
 public class AntiquiteFactory implements EpoqueFactory {
 
+	private int id;
 	/**
 	 * 
 	 */
 	public AntiquiteFactory() {
-		// TODO Auto-generated constructor stub
+		this.id = 0;
+	}
+
+	@Override
+	public Bateau createBateau2() {
+		return new BateauAntique2(id++);
+	}
+
+	@Override
+	public Bateau createBateau3_1() {
+		return new BateauAntique3_1(id++);
+	}
+
+	@Override
+	public Bateau createBateau3_2() {
+		return new BateauAntique3_2(id++);
+	}
+
+	@Override
+	public Bateau createBateau4() {
+		return new BateauAntique4(id++);
+	}
+
+	@Override
+	public Bateau createBateau5() {
+		return new BateauAntique5(id++);
 	}
 
 }
