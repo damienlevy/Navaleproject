@@ -4,6 +4,8 @@
 package modele;
 
 import modele.bateau.Bateau;
+import modele.bateau.antiquite.*;
+
 
 /**
  * @author levy54u
@@ -11,41 +13,37 @@ import modele.bateau.Bateau;
  */
 public class AntiquiteFactory implements EpoqueFactory {
 
+	private int id;
 	/**
 	 * 
 	 */
 	public AntiquiteFactory() {
-		// TODO Auto-generated constructor stub
+		this.id = 0;
 	}
 
 	@Override
 	public Bateau createBateau2() {
-		
-		return null;
+		return new BateauAntique2(id++);
 	}
 
 	@Override
 	public Bateau createBateau3_1() {
-		// TODO Auto-generated method stub
-		return null;
+		return new BateauAntique3_1(id++);
 	}
 
 	@Override
 	public Bateau createBateau3_2() {
-		// TODO Auto-generated method stub
-		return null;
+		return new BateauAntique3_2(id++);
 	}
 
 	@Override
 	public Bateau createBateau4() {
-		// TODO Auto-generated method stub
-		return null;
+		return new BateauAntique4(id++);
 	}
 
 	@Override
 	public Bateau createBateau5() {
-		// TODO Auto-generated method stub
-		return null;
+		return new BateauAntique5(id++);
 	}
 
 }
