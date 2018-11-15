@@ -1,7 +1,7 @@
 /**
  * 
  */
-package modele;
+package modele.factory;
 
 import modele.bateau.Bateau;
 import modele.bateau.antiquite.*;

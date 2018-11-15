@@ -1,10 +1,9 @@
 /**
  * 
  */
-package modele;
+package modele.factory;
 
 import modele.bateau.Bateau;
-import modele.bateau.antiquite.BateauAntique3_1;
 import modele.bateau.moderne.BateauModerne2;
 import modele.bateau.moderne.BateauModerne3_1;
 import modele.bateau.moderne.BateauModerne3_2;
