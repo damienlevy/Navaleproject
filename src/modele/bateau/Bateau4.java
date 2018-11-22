@@ -29,6 +29,13 @@ public abstract class Bateau4 implements Bateau{
 	}
 	
 	@Override
+	public void setPosition(Point...points){
+		for(Point p : points ){
+			this.coords.add(p);
+		}
+	}
+	
+	@Override
 	public void touche(Point p){
 		if(coords.contains(p) && !touche.contains(p)) {
 			touche.add(p);
