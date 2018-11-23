@@ -5,6 +5,7 @@
  */
 package modele;
 
+import java.awt.Point;
 import modele.Case;
 /**
  *
@@ -15,7 +16,7 @@ public class Plateau {
     public static final int Width = 10; 
     public static final int Height = 10;
     
-    private final Case[][] plateau  ; 
+    public final Case[][] plateau  ; 
     
     public Plateau ()
     {
@@ -43,7 +44,40 @@ public class Plateau {
             return true ;
         return false ;
     }
-    
-    
+    public boolean positionVide(Point ...p)       
+    {
+        int i = p[0].x;
+        int j = p[0].y;
+        while( i <= p[1].x)
+        {
+            while(j<= p[2].y)
+            {
+                if(this.estVide(plateau[i][j]))
+                {   i++;
+                    j++;
+                }
+                 else
+                {
+                    return false ;
+                }
+            }
+        }
+       
+     return true ; 
+    }
+    public void allocatePosition(int id , Point ...p)
+    {
+        
+        int i = p[0].x;
+        int j = p[0].y;
+        while( i <= p[1].x)
+        {
+            while(j<= p[2].y)
+            {
+               this.plateau[i][j]=new Case(id);
+            }
+        }
+    }
+ 
     
 }

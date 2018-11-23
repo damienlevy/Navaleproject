@@ -9,7 +9,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import modele.bateau.Bateau;
+import modele.factory.AntiquiteFactory;
 import modele.factory.EpoqueFactory;
+import modele.factory.ModernFactory;
 
 /**
  *
@@ -20,6 +22,8 @@ public class ModelClassique extends Jeu {
      private ArrayList<Bateau> bateauJoueur2;
      private Plateau plateauJoueur1;
      private Plateau plateauJoueur2;
+     private final EpoqueFactory epoque ;
+     private static int NBCases;
     
     
     public ArrayList<Bateau> getBateauJoueur1() {
@@ -39,6 +43,7 @@ public class ModelClassique extends Jeu {
 	}
 
 	public ModelClassique(EpoqueFactory epoque){
+        this.epoque =epoque;
     	this.bateauJoueur1 = new ArrayList<>();
     	this.addBateau(epoque, bateauJoueur1);
     	this.bateauJoueur2 = new ArrayList<>();
@@ -61,8 +66,32 @@ public class ModelClassique extends Jeu {
     
    
     @Override
-   public void placerBateau(Bateau bateau,Point ...p) {
-    	bateau.setPosition(p);
+   public void placerBateau(Bateau bateau,Plateau plateau ,Point ...p) {
+    	 Plateau pla; 
+          //check Game board
+        if(plateau == plateauJoueur1)
+            pla=this.getPlateauJoueur1();
+           
+        else
+            pla = this.getPlateauJoueur2();
+       
+        //check boat type 
+        if(this.getEpoque() instanceof AntiquiteFactory ) {
+            this.setNBCASE(4);
+        } 
+        else if(this.getEpoque() instanceof ModernFactory){
+             this.setNBCASE(2);
+        }
+         //verfiy if this position in the Game boeard is already empty 
+           if(pla.positionVide(p) == false )
+               System.out.println("Position already token "); // give an other Empty position 
+           else 
+           {
+                bateau.setPosition(p);
+                //place on the Game board too 
+                pla. allocatePosition(bateau.getID() ,p);
+                setPlateau(pla, plateau); //faudra mieu la changer 
+           }
     }
 
     @Override
@@ -90,6 +119,22 @@ public class ModelClassique extends Jeu {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  
+    public EpoqueFactory getEpoque()
+    {
+        return this.epoque;
+    }
+    public void setNBCASE(int n )
+    {
+        ModelClassique.NBCases = n ;
+        
+    }
+
+    private void setPlateau(Plateau pla, Plateau plateau) {
+       if(plateau==this.plateauJoueur1)
+          this.plateauJoueur1=pla;
+       else if(plateau == this.plateauJoueur2)
+         this.plateauJoueur2=pla;
+    }
+   
     
 }

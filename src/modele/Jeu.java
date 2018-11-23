@@ -22,7 +22,7 @@ abstract class Jeu {
    
    public Bateau[] bateaux;
     
-    abstract void placerBateau(Bateau bateau,Point ...p); //placer les Bateaux sur le plateau 
+    abstract void placerBateau(Bateau bateau,Plateau plateau, Point ...p); //placer les Bateaux sur le plateau 
     abstract void jouer(); //lancer le jeu 
     abstract void finDePartie(); //End of Game 
     abstract void addVue(); 
