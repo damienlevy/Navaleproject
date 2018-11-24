@@ -70,8 +70,7 @@ public class ModelClassique extends Jeu {
     	 Plateau pla; 
           //check Game board
         if(plateau == plateauJoueur1)
-            pla=this.getPlateauJoueur1();
-           
+            pla=this.getPlateauJoueur1();      
         else
             pla = this.getPlateauJoueur2();
        
@@ -83,12 +82,12 @@ public class ModelClassique extends Jeu {
              this.setNBCASE(2);
         }
          //verfiy if this position in the Game boeard is already empty 
-           if(pla.positionVide(p) == false )
+           if(pla.positionVide(p) == false || VerifyPosition(p) )
                System.out.println("Position already token "); // give an other Empty position 
            else 
            {
                 bateau.setPosition(p);
-                //place on the Game board too 
+                //place it on the Game board too 
                 pla. allocatePosition(bateau.getID() ,p);
                 setPlateau(pla, plateau); //faudra mieu la changer 
            }
@@ -134,6 +133,15 @@ public class ModelClassique extends Jeu {
           this.plateauJoueur1=pla;
        else if(plateau == this.plateauJoueur2)
          this.plateauJoueur2=pla;
+    }
+    private boolean VerifyPosition(Point ...p)
+    {
+     if(this.NBCases ==( p[2].y-p[0].y))
+     {
+         if((p[1].x - p[0].x) == 1)
+             return true ;
+     }
+     return false ;
     }
    
     

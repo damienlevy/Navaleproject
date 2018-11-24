@@ -5,6 +5,11 @@
  */
 package start;
 
+import vues.Vue;
+import vues.VueAdversaire;
+import vues.VueComplete;
+import vues.VuePerso;
+
 /**
  *
  * @author trabels33u
@@ -15,7 +20,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       VueComplete v= new VueComplete();
+       VuePerso p = new VuePerso();
+       VueAdversaire a = new VueAdversaire();
     }
     
 }
