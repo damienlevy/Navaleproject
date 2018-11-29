@@ -11,9 +11,9 @@ package vues;
  * @author trabels33u
  */
 public interface Vue {
-    
-    
-  
+	
+	public abstract void display();     
+	public abstract void update();       
     
     
 }
