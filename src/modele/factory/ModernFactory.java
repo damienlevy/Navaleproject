@@ -21,7 +21,7 @@ public class ModernFactory implements EpoqueFactory {
 	 * 
 	 */
 	public ModernFactory() {
-		this.id = 0;
+		this.id = 1;
 	}
 
 	@Override

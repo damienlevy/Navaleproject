@@ -16,6 +16,10 @@ public abstract class Bateau2 implements Bateau{
 		this.touche = new ArrayList<>();
 	}
 	
+	public int getTaille() {
+		return 2;
+	}
+	
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
@@ -26,6 +30,13 @@ public abstract class Bateau2 implements Bateau{
 	public List<Point> getPosition() {
 		// TODO Auto-generated method stub
 		return coords;
+	}
+	
+	@Override
+	public void setPosition(Point...points){
+		for(Point p : points ){
+			this.coords.add(p);
+		}
 	}
 	
 	@Override
