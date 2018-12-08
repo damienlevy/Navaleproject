@@ -10,6 +10,7 @@ package vues;
  * @author TRABELSI
  */
 public interface GameVue{
+  
     void display();
     void update();
     
