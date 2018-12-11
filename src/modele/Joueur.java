@@ -44,6 +44,7 @@ abstract class Joueur {
     }
     
     public void placerBateau(Bateau b, List<Point> p){
+    	b.setPosition(p);
     	    	
     }
   

@@ -33,7 +33,7 @@ public abstract class Bateau5 implements Bateau{
 	}
 	
 	@Override
-	public void setPosition(Point...points){
+	public void setPosition(List<Point> points){
 		for(Point p : points ){
 			this.coords.add(p);
 		}

@@ -7,7 +7,7 @@ public interface Bateau {
 
 	public int getID();
 	public List<Point> getPosition();
-	public void setPosition(Point...points);
+	public void setPosition(List<Point> p);
 	public void touche(Point p);
 	public boolean estCoule();
 	public int getTaille();
