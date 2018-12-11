@@ -16,6 +16,10 @@ public abstract class Bateau5 implements Bateau{
 		this.touche = new ArrayList<>();
 	}
 	
+	public int getTaille(){
+		return 5;
+	}
+	
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub

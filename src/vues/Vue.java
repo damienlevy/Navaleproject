@@ -34,11 +34,11 @@ public final static int CaseY =60;
        
     public void CreatFenetre()       
       {
-    Vue v = new Vue();
+   Vue v = new Vue();
    game = new JFrame();
    game.setSize(Width , Height);
    game.setTitle("Bataille navale (Complete)");
-    game.getContentPane().add(v);
+   game.getContentPane().add(v);
    game.setVisible(true);
    game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        }

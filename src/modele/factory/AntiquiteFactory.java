@@ -18,7 +18,7 @@ public class AntiquiteFactory implements EpoqueFactory {
 	 * 
 	 */
 	public AntiquiteFactory() {
-		this.id = 0;
+		this.id = 1;
 	}
 
 	@Override
