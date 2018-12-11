@@ -5,15 +5,22 @@
  */
 package modele;
 
+import java.util.List;
+
+import modele.bateau.Bateau;
+
 /**
  *
  * @author trabels33u
  */
 public class IA extends Joueur {
 
-    @Override
-    int getMunition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+	
+    public IA(int munition, Plateau plateau , List<Bateau> b){
+		super(munition, plateau, b);
+	}
+    
+    
     
 }

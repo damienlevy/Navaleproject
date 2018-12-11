@@ -5,15 +5,19 @@
  */
 package modele;
 
+import java.util.List;
+
+import modele.bateau.*;
+
 /**
  *
  * @author trabels33u
  */
 public class Humain extends Joueur {
 
-    @Override
-    int getMunition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
+	public Humain(int munition, Plateau plateau , List<Bateau> b){
+		super(munition, plateau, b);
+	}
     
 }

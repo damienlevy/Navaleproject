@@ -5,15 +5,47 @@
  */
 package modele;
 
+import java.awt.Point;
+import java.util.List;
+
+import modele.bateau.Bateau;
+
 /**
  *
  * @author trabels33u
  */
 abstract class Joueur {
-    public int minution ;
+    
+	public int munition ;
+    public Plateau plateau;
+    public List<Bateau> bateaux;
+    
+    public Joueur(int munition, Plateau plateau , List<Bateau> b){
+    	this.munition = munition;
+    	this.plateau = plateau;
+    	this.bateaux = b;
+    }
     
     
-   abstract int getMunition();
+    public int getMunition(){
+    	return this.munition;
+    }
+    
+    public void tirer(){
+    	this.munition --;
+    }
+    
+    public boolean munitionIsEmpty(){
+    	boolean b = false;
+    	if(this.munition==0){
+    		b = true;
+    	}
+    	return b;
+    }
+    
+    public void placerBateau(Bateau b, List<Point> p){
+    	    	
+    }
   
 
 }

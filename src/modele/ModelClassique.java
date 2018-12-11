@@ -7,6 +7,7 @@ package modele;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 
 import modele.bateau.Bateau;
 import modele.factory.AntiquiteFactory;
@@ -64,56 +65,58 @@ public class ModelClassique extends Jeu {
     	this.addBateau(epoque.createBateau5() , listBateau);
     }
     
+
    
     @Override
-   public void placerBateau(Bateau bateau,Plateau plateau ,Point ...p) {
-    	 Plateau pla; 
-          //check Game board
-        if(plateau == plateauJoueur1)
-            pla=this.getPlateauJoueur1();      
-        else
-            pla = this.getPlateauJoueur2();
-       
-        //check boat type 
-        if(this.getEpoque() instanceof AntiquiteFactory ) {
-            this.setNBCASE(4);
-        } 
-        else if(this.getEpoque() instanceof ModernFactory){
-             this.setNBCASE(2);
-        }
-         //verfiy if this position in the Game boeard is already empty 
-           if(pla.positionVide(p) == false || VerifyPosition(p) )
-               System.out.println("Position already token "); // give an other Empty position 
-           else 
-           {
-                bateau.setPosition(p);
-                //place it on the Game board too 
-                pla. allocatePosition(bateau.getID() ,p);
-                setPlateau(pla, plateau); //faudra mieu la changer 
-           }
+   public void placerBateau(Bateau bateau , List<Point> p,int idJoueur) {
+		/*
+		 * Plateau pla; //check Game board if(plateau == plateauJoueur1)
+		 * pla=this.getPlateauJoueur1(); else pla = this.getPlateauJoueur2();
+		 * 
+		 * //check boat type if(this.getEpoque() instanceof AntiquiteFactory ) {
+		 * this.setNBCASE(4); } else if(this.getEpoque() instanceof
+		 * ModernFactory){ this.setNBCASE(2); } //verfiy if this position in the
+		 * Game boeard is already empty if(pla.positionVide(p) == false ||
+		 * VerifyPosition(p) ) System.out.println("Position already token "); //
+		 * give an other Empty position else { bateau.setPosition(p); //place it
+		 * on the Game board too pla. allocatePosition(bateau.getID() ,p);
+		 * setPlateau(pla, plateau); //faudra mieu la changer }
+		 
+    	if(this.verifierPoint(plateau, p)){
+    		plateau.allocatePosition(bateau.getID(), p);
+    	}
+    	*/
+    	
+    	
+    	
+    	
     }
 
     @Override
-    void jouer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void jouer() {
+        
     }
 
     @Override
+	public
     void finDePartie() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+	public
     void addVue() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+	public
     void save() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+	public
     void load() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -143,6 +146,7 @@ public class ModelClassique extends Jeu {
      }
      return false ;
     }
+
    
     
 }
