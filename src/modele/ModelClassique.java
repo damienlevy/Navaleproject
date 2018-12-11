@@ -19,40 +19,40 @@ import modele.factory.ModernFactory;
  * @author trabels33u
  */
 public class ModelClassique extends Jeu {
-     private ArrayList<Bateau> bateauJoueur1;
-     private ArrayList<Bateau> bateauJoueur2;
-     private Plateau plateauJoueur1;
-     private Plateau plateauJoueur2;
-     private final EpoqueFactory epoque ;
-     private static int NBCases;
     
+	 protected Joueur j1;
+     protected Joueur ia;
+
+     
+     
+ 	public ModelClassique(EpoqueFactory epoque){
+ 		super(epoque);
+        ArrayList<Bateau> bateauJoueur1;
+        ArrayList<Bateau> bateauJoueur2;
+    	bateauJoueur1 = new ArrayList<>();
+    	addBateau(epoque, bateauJoueur1);
+    	bateauJoueur2 = new ArrayList<>();
+    	this.addBateau(epoque, bateauJoueur2);
+    	this.j1 = new Humain(100,bateauJoueur1);
+    	this.ia = new IA(100,bateauJoueur2);
+    }
     
-    public ArrayList<Bateau> getBateauJoueur1() {
-		return bateauJoueur1;
+    public List<Bateau> getBateauJoueur1() {
+		return j1.getBateau();
 	}
 
-	public ArrayList<Bateau> getBateauJoueur2() {
-		return bateauJoueur2;
+	public List<Bateau> getBateauIA() {
+		return ia.getBateau();
 	}
 
 	public Plateau getPlateauJoueur1() {
-		return plateauJoueur1;
+		return j1.getPlateau();
 	}
 
-	public Plateau getPlateauJoueur2() {
-		return plateauJoueur2;
+	public Plateau getPlateauIA() {
+		return ia.getPlateau();
 	}
 
-	public ModelClassique(EpoqueFactory epoque){
-        this.epoque =epoque;
-    	this.bateauJoueur1 = new ArrayList<>();
-    	this.addBateau(epoque, bateauJoueur1);
-    	this.bateauJoueur2 = new ArrayList<>();
-    	this.addBateau(epoque, bateauJoueur2);
-    	this.plateauJoueur1 = new Plateau();
-    	this.plateauJoueur2 = new Plateau();
-    	
-    }
     
     private void addBateau(Bateau b, ArrayList<Bateau> listBateau){
     	listBateau.add(b);
@@ -68,7 +68,7 @@ public class ModelClassique extends Jeu {
 
    
     @Override
-   public void placerBateau(Bateau bateau , List<Point> p,int idJoueur) {
+   public void placerBateau(Bateau bateau , List<Point> p,Joueur j) {
 		/*
 		 * Plateau pla; //check Game board if(plateau == plateauJoueur1)
 		 * pla=this.getPlateauJoueur1(); else pla = this.getPlateauJoueur2();
@@ -87,7 +87,7 @@ public class ModelClassique extends Jeu {
     	}
     	*/
     	
-    	
+    	j.placerBateau(bateau, p);
     	
     	
     }
@@ -125,18 +125,15 @@ public class ModelClassique extends Jeu {
     {
         return this.epoque;
     }
-    public void setNBCASE(int n )
-    {
-        ModelClassique.NBCases = n ;
-        
-    }
 
+/*
     private void setPlateau(Plateau pla, Plateau plateau) {
        if(plateau==this.plateauJoueur1)
           this.plateauJoueur1=pla;
        else if(plateau == this.plateauJoueur2)
          this.plateauJoueur2=pla;
     }
+    
     private boolean VerifyPosition(Point ...p)
     {
      if(this.NBCases ==( p[2].y-p[0].y))
@@ -146,7 +143,7 @@ public class ModelClassique extends Jeu {
      }
      return false ;
     }
-
+    */
    
     
 }

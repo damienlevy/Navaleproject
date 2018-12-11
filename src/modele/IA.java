@@ -17,8 +17,8 @@ public class IA extends Joueur {
 
 
 	
-    public IA(int munition, Plateau plateau , List<Bateau> b){
-		super(munition, plateau, b);
+    public IA(int munition, List<Bateau> b){
+		super(munition, b);
 	}
     
     

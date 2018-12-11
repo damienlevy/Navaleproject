@@ -20,9 +20,9 @@ abstract class Joueur {
     public Plateau plateau;
     public List<Bateau> bateaux;
     
-    public Joueur(int munition, Plateau plateau , List<Bateau> b){
+    public Joueur(int munition,List<Bateau> b){
     	this.munition = munition;
-    	this.plateau = plateau;
+    	this.plateau = new Plateau();
     	this.bateaux = b;
     }
     
@@ -46,6 +46,14 @@ abstract class Joueur {
     public void placerBateau(Bateau b, List<Point> p){
     	b.setPosition(p);
     	    	
+    }
+    
+    public Plateau getPlateau(){
+    	return this.plateau;
+    }
+ 
+    public List<Bateau> getBateau(){
+    	return this.bateaux;
     }
   
 

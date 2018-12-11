@@ -16,8 +16,8 @@ import modele.bateau.*;
 public class Humain extends Joueur {
 
  
-	public Humain(int munition, Plateau plateau , List<Bateau> b){
-		super(munition, plateau, b);
+	public Humain(int munition, List<Bateau> b){
+		super(munition, b);
 	}
     
 }
