@@ -34,8 +34,8 @@ public class IA extends Joueur {
    {
        Point p = new Point();
        Random r = new Random();
-       p.x = r.nextInt(10)+1;
-       p.y = r.nextInt(10)+1;
+       p.x = r.nextInt(9)+1;
+       p.y = r.nextInt(9)+1;
       // p.x =1 + (int)(Math.random() * ((11 - 1) + 1));
        //p.y =1 + (int)(Math.random() * ((11 - 1) + 1));
        return p;
@@ -59,7 +59,7 @@ public class IA extends Joueur {
    {
        int i =0;
        boolean cont =true;
-        while(i<=b.getTaille()&& cont== true)
+        while(i<b.getTaille()&& cont== true)
               {
                if(super.plateau.estVide(super.plateau.plateau[first.x+i][first.y]))
                  i++;
@@ -75,7 +75,7 @@ public class IA extends Joueur {
    {
        int i =0;
        boolean cont =  true ;
-        while(i <= b.getTaille() && cont ==true)
+        while(i < b.getTaille() && cont ==true)
               {
                if(super.plateau.estVide(super.plateau.plateau[first.x][first.y+i]))
                {
