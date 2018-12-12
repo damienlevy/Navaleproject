@@ -20,6 +20,10 @@ public class Case {
         this.idBateau = id ; 
     }
     
+    public Case(int id,boolean toucher){
+    	this.idBateau = id;
+    	this.toucher = toucher;
+    }
     
     public void toucher()
     {

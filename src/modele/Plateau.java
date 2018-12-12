@@ -17,14 +17,17 @@ import modele.Case;
  */
 public class Plateau {
 
-	public static final int Width = 12;
-	public static final int Height = 12;
+	public static final int Width = 11;
+	public static final int Height = 11;
 
-	public final Case[][] plateau;
+	public Case[][] plateau;
 
 	public Plateau() {
 		plateau = new Case[Width][Height];
 		this.initialiser();
+	}
+	public Plateau(Case[][] plateau){
+		this.setPlateau(plateau);
 	}
 
 	public final void initialiser() {// initialiser plateau vide
@@ -42,6 +45,9 @@ public class Plateau {
 	public void libererCase(Point p) {
 		Case c = getCase(p);
 		c.setidBateau(-1);
+	}
+	public void setPlateau(Case[][] plateau){
+		this.plateau = plateau;
 	}
 
 	public Case getCase(Point p) {
@@ -103,9 +109,9 @@ public class Plateau {
 		}
 	}
 
-    Case getCase(Point p) {
-        return this.plateau[p.x][p.y];
-    }
+
+    
+    
 
     
 
