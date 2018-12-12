@@ -6,6 +6,7 @@
 package modele;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 import modele.bateau.Bateau;
@@ -59,6 +60,12 @@ public abstract class Joueur {
 	}
 
 	public void placerBateau(Bateau b, List<Point> p){
+		if(b.getPosition().size() != 0) {
+			ArrayList<Point> coords = (ArrayList<Point>) b.getPosition();
+			for (Point coord : coords) {
+				plateau.libererCase(coord);
+			}
+		}
 		if(this.plateau.positionVide(p)) {
 			b.setPosition(p);
 			this.plateau.allocatePosition(b.getID(), p);

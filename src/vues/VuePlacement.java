@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vues;
 
 import java.awt.Dimension;
@@ -14,16 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-
-
-/**
- *
- * @author TRABELSI
- */
-public class VuePerso extends JPanel implements GameVue {
+public class VuePlacement extends JPanel implements GameVue{
 	public static Image back;
 	private final static int w = 400;
 	private final static int h = 400;
@@ -32,8 +22,9 @@ public class VuePerso extends JPanel implements GameVue {
 	public JPanel perso ;
 	private BufferedImage para;
 	private BufferedImage bateau;
+	
 
-	public VuePerso()
+	public VuePlacement()
 	{
 		this.display();
 	}
@@ -51,7 +42,7 @@ public class VuePerso extends JPanel implements GameVue {
 	}
 
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
+		super.paintComponents(g);
 		try {
 			back = ImageIO.read(new File("./src/vues/images/back.jpg"));
 			para = ImageIO.read(new File("./src/vues/images/para.jpg"));
@@ -93,4 +84,5 @@ public class VuePerso extends JPanel implements GameVue {
 		}
 
 	}
+
 }

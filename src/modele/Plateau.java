@@ -22,13 +22,13 @@ public class Plateau {
 	public final Case[][] plateau;
 
 	public Plateau() {
-		this.initialiser();
 		plateau = new Case[Width][Height];
+		this.initialiser();
 	}
 
 	public final void initialiser() {// initialiser plateau vide
-		for (int i = 0; i <= Width; i++) {
-			for (int j = 0; j <= Height; j++) {
+		for (int i = 0; i < Width; i++) {
+			for (int j = 0; j < Height; j++) {
 				plateau[i][j] = new Case(-1);
 			}
 		}
@@ -36,6 +36,11 @@ public class Plateau {
 	}
 	public Case[][] getPlateau(){
 		return this.plateau;
+	}
+	
+	public void libererCase(Point p) {
+		Case c = getCase(p);
+		c.setidBateau(-1);
 	}
 
 	public Case getCase(int x, int y) {

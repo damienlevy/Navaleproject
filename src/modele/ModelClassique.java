@@ -9,8 +9,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import vues.GameVue;
-
 import modele.bateau.Bateau;
 import modele.factory.EpoqueFactory;
 
