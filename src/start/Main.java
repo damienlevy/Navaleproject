@@ -5,7 +5,7 @@
  */
 package start;
 
-import vues.Vue;
+
 import vues.VueAdversaire;
 import vues.VueComplete;
 import vues.VuePerso;
@@ -21,8 +21,7 @@ public class Main {
      */
     public static void main(String[] args) {
        VueComplete v= new VueComplete();
-       VuePerso p = new VuePerso();
-       VueAdversaire a = new VueAdversaire();
+     
     }
     
 }

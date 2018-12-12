@@ -1,10 +1,10 @@
 package controleur;
 
-import vues.Vue;
+import vues.GameVue;
 
 public interface Controleur {
 
 	
 	public void start();
-	public void addVue(Vue vue);
+	public void addVue(GameVue vue);
 }

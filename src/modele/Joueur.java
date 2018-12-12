@@ -16,7 +16,7 @@ import modele.bateau.Bateau;
  */
 abstract class Joueur {
     
-	public int munition ;
+    public int munition ;
     public Plateau plateau;
     public List<Bateau> bateaux;
     
