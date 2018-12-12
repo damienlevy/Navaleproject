@@ -14,7 +14,7 @@ import vues.VuePerso;
  *
  * @author trabels33u
  */
-public class Main {
+public class Main { 
 
     /**
      * @param args the command line arguments

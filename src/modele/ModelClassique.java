@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modele.bateau.Bateau;
-import modele.factory.AntiquiteFactory;
 import modele.factory.EpoqueFactory;
-import modele.factory.ModernFactory;
+
 
 /**
  *
@@ -23,7 +22,7 @@ public class ModelClassique extends Jeu {
 	 protected Joueur j1;
      protected Joueur ia;
 
-     
+      
      
  	public ModelClassique(EpoqueFactory epoque){
  		super(epoque);
@@ -69,23 +68,6 @@ public class ModelClassique extends Jeu {
    
     @Override
    public void placerBateau(Bateau bateau , List<Point> p,Joueur j) {
-		/*
-		 * Plateau pla; //check Game board if(plateau == plateauJoueur1)
-		 * pla=this.getPlateauJoueur1(); else pla = this.getPlateauJoueur2();
-		 * 
-		 * //check boat type if(this.getEpoque() instanceof AntiquiteFactory ) {
-		 * this.setNBCASE(4); } else if(this.getEpoque() instanceof
-		 * ModernFactory){ this.setNBCASE(2); } //verfiy if this position in the
-		 * Game boeard is already empty if(pla.positionVide(p) == false ||
-		 * VerifyPosition(p) ) System.out.println("Position already token "); //
-		 * give an other Empty position else { bateau.setPosition(p); //place it
-		 * on the Game board too pla. allocatePosition(bateau.getID() ,p);
-		 * setPlateau(pla, plateau); //faudra mieu la changer }
-		 
-    	if(this.verifierPoint(plateau, p)){
-    		plateau.allocatePosition(bateau.getID(), p);
-    	}
-    	*/
     	
     	j.placerBateau(bateau, p);
     	
@@ -125,6 +107,11 @@ public class ModelClassique extends Jeu {
     {
         return this.epoque;
     }
+
+	public void tirer(Point c, Joueur j) {
+		j.getPlateau().estVide(c);
+		
+	}
 
 /*
     private void setPlateau(Plateau pla, Plateau plateau) {

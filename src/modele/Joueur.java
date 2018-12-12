@@ -14,7 +14,7 @@ import modele.bateau.Bateau;
  *
  * @author trabels33u
  */
-abstract class Joueur {
+public abstract class Joueur {
     
 	public int munition ;
     public Plateau plateau;
@@ -44,7 +44,11 @@ abstract class Joueur {
     }
     
     public void placerBateau(Bateau b, List<Point> p){
-    	b.setPosition(p);
+    	
+    	if(this.plateau.positionVide(p)) {
+    		b.setPosition(p);
+    		this.plateau.allocatePosition(b.getID(), p);
+    	}
     	    	
     }
     

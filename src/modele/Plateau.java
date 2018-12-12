@@ -38,18 +38,33 @@ public class Plateau {
 		return this.plateau;
 	}
 
+	public Case getCase(int x, int y) {
+		return plateau[x][y];
+	}
+	
 	// verfifier si la case est déjà vide avant de placer le bateau
 	public boolean estVide(Case c) {
 		if (c.getidBateau() == -1)
 			return true;
 		return false;
 	}
+	
+	public boolean estVide(Point p) {
+		boolean b = false;
+		int x = (int) p.getX();
+		int y = (int) p.getY();
+		
+		if(this.estVide(this.getCase(x, y))) {
+			b=true;
+		}
+		return b;
+	}
 
-	public boolean positionVide(Point... p) {
-		int i = p[0].x;
-		int j = p[0].y;
-		while (i <= p[1].x) {
-			while (j <= p[2].y) {
+	public boolean positionVide(List<Point> p) {
+		int i = (int) p.get(0).getX();
+		int j = (int) p.get(0).getY();
+		while (i <= p.get(1).getX()) {
+			while (j <= p.get(1).getY()) {
 				if (this.estVide(plateau[i][j])) {
 					i++;
 					j++;

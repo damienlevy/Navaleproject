@@ -9,24 +9,25 @@ package modele;
  *
  * @author trabels33u
  */
-class Case {
+public class Case {
     boolean toucher ;
     private int idBateau; 
     
     
     public Case(int id )
     {
-        this.toucher = false ; // par deafaut 
+        this.toucher = false ; // par defaut 
         this.idBateau = id ; 
     }
     
     
-    boolean estToucher()
+    public void toucher()
     {
-       
-        return this.toucher=true ;
+       this.toucher=true ;
     }
-    
+    public boolean estTouche() {
+    	return this.toucher;
+    }
     
     //Return the id of the Naval
     public int getidBateau()

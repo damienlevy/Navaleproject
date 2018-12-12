@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import modele.Jeu;
+import modele.Joueur;
 import modele.ModelClassique;
 import modele.bateau.Bateau;
 import vues.Vue;
@@ -36,8 +37,8 @@ public class ControleurJeuxClassique implements Controleur{
 		listVues.add(vue);
 	}
 
-	public void notifyTirer(Point c) {
-		model.tirer(c);
+	public void notifyTirer(Point c,Joueur j) {
+		model.tirer(c,j);
 	}
 
 	public void selectBateau(int idBateau, int idJoueur) {
