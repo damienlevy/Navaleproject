@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import modele.ModelClassique;
+import modele.factory.ModernFactory;
 
 
 /**
@@ -31,10 +33,13 @@ public class VueAdversaire extends JPanel implements GameVue {
     public JPanel adversaire ;
     private BufferedImage para;
     private BufferedImage bat;
+    private ModelClassique model;
+    private BufferedImage boat;
     
     public VueAdversaire()
     {
-        
+
+        model = new ModelClassique(new ModernFactory());
         this.display();
     }
 
@@ -56,6 +61,7 @@ public class VueAdversaire extends JPanel implements GameVue {
         back = ImageIO.read(new File("./src/vues/images/back.jpg"));
         para = ImageIO.read(new File("./src/vues/images/para.jpg"));
         bat = ImageIO.read(new File("./src/vues/images/bateau.png"));
+         boat = ImageIO.read(new File("./src/vues/images/boat.png"));
         Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
         
         for( int i=0 ; i <= (w/CaseX); i++ )
@@ -90,7 +96,22 @@ public class VueAdversaire extends JPanel implements GameVue {
               }
               
             }
+           
         }
+        for(int i = 1; i< 11 ; i++)     
+        {
+            for(int j=1; j < 11 ; j++)
+            {
+                 if(model.getPlateauIA().plateau[i][j].getidBateau() >= 1)
+                     
+                 {
+                     g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
+                     g.drawImage(boat,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+                 }
+            }
+        }
+        
+        
       
     } catch (IOException ex) {
         Logger.getLogger(VueAdversaire.class.getName()).log(Level.SEVERE, null, ex);
