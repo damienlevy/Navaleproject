@@ -94,4 +94,10 @@ public class Plateau {
 		}
 	}
 
+    Case getCase(Point p) {
+        return this.plateau[p.x][p.y];
+    }
+
+    
+
 }
