@@ -10,7 +10,7 @@ package modele;
  * @author trabels33u
  */
 public class Case {
-    boolean toucher ;
+    private boolean toucher ;
     private int idBateau; 
     
     
@@ -25,6 +25,7 @@ public class Case {
     {
        this.toucher=true ;
     }
+    
     public boolean estTouche() {
     	return this.toucher;
     }
@@ -40,6 +41,8 @@ public class Case {
         this.idBateau= id;
     }
     
-    
+    public boolean isToucher() {
+		return toucher;
+	}
     
 }
