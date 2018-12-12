@@ -14,7 +14,7 @@ public class ControleurJeuxClassique implements Controleur{
 
 	private List<GameVue> listVues;
 	private ModelClassique model;
-	private HashMap<Integer, Integer> select;
+	private HashMap<Joueur, Integer> select;
 	//0 horizontal // 1 vertical
 	private HashMap<Integer, Integer> orientation;
 
@@ -41,8 +41,8 @@ public class ControleurJeuxClassique implements Controleur{
 		model.tirer(c,j);
 	}
 
-	public void selectBateau(int idBateau, int idJoueur) {
-		if(idBateau == select.get(idJoueur)) {
+	public void selectBateau(int idBateau, Joueur j) {
+		if(idBateau == select.get(j)) {
 
 			if(orientation.get(idBateau) == 0) {
 				orientation.remove(idBateau);
@@ -53,21 +53,21 @@ public class ControleurJeuxClassique implements Controleur{
 			}
 
 		} else {
-			select.remove(idJoueur);
-			select.put(idJoueur, idBateau);
+			select.remove(j);
+			select.put(j, idBateau);
 			orientation.put(idBateau, 0);
 		}
 	}
 
-	public void placerBateau(Point c, int idJoueur) {
+	public void placerBateau(Point c, Joueur j) {
 		boolean valide = true;
-		if(select.get(idJoueur) != null) {
-			ArrayList<Bateau> bateaux = model.getBateauJoueur1();
+		if(select.get(j) != null) {
+			ArrayList<Bateau> bateaux = (ArrayList<Bateau>) model.getBateauJoueur1();
 			ArrayList<Point> position = new ArrayList<>(5);
 			int taille = 0;
 			Bateau b = null;
 			for (Bateau bateau : bateaux) {
-				if(bateau.getID() == select.get(idJoueur)) {
+				if(bateau.getID() == select.get(j)) {
 					b = bateau; 
 					taille = bateau.getTaille();
 				}
@@ -94,7 +94,7 @@ public class ControleurJeuxClassique implements Controleur{
 						position.add(new Point(c.x, c.y+i));
 					}
 				}
-				model.placerBateau(b, position, idJoueur);
+				model.placerBateau(b, position, j);
 			}
 		}
 	}

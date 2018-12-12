@@ -16,8 +16,8 @@ import modele.Case;
  */
 public class Plateau {
 
-	public static final int Width = 10;
-	public static final int Height = 10;
+	public static final int Width = 12;
+	public static final int Height = 12;
 
 	public final Case[][] plateau;
 
@@ -43,12 +43,12 @@ public class Plateau {
 		c.setidBateau(-1);
 	}
 
-	public Case getCase(int x, int y) {
-		return plateau[x][y];
-	}
-	
 	public Case getCase(Point p) {
 		return plateau[p.x][p.y];
+	}
+	
+	public Case getCase(int x, int y) {
+		return plateau[x][y];
 	}
 	
 	// verfifier si la case est déjà vide avant de placer le bateau

@@ -5,12 +5,13 @@
  */
 package vues;
 
+import controleur.Controleur;
+
 /**
  *
  * @author TRABELSI
  */
-public interface GameVue{
-  
+public interface GameVue{	
     void display();
     void update();
     

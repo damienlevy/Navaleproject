@@ -65,7 +65,7 @@ public class ModelClassique extends Jeu {
 
 
 	@Override
-	public void placerBateau(Bateau bateau , List<Point> p,Joueur j) {
+	public void placerBateau(Bateau bateau , ArrayList<Point> p,Joueur j) {
 		j.placerBateau(bateau, p);
 		notifyVue();
 	}
@@ -103,24 +103,6 @@ public class ModelClassique extends Jeu {
 		notifyVue();
 	}
 
-	/*
-    private void setPlateau(Plateau pla, Plateau plateau) {
-       if(plateau==this.plateauJoueur1)
-          this.plateauJoueur1=pla;
-       else if(plateau == this.plateauJoueur2)
-         this.plateauJoueur2=pla;
-    }
-
-    private boolean VerifyPosition(Point ...p)
-    {
-     if(this.NBCases ==( p[2].y-p[0].y))
-     {
-         if((p[1].x - p[0].x) == 1)
-             return true ;
-     }
-     return false ;
-    }
-	 */
 
 	private Joueur getOtherJoueur(Joueur j) {		
 		return j.equals(j1) ? ia : j1;

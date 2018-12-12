@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import controleur.Controleur;
+
 
 
 /**
@@ -24,14 +26,13 @@ public class VueComplete extends JPanel implements GameVue {
     public final static int CaseY =20   ;
     private final VueAdversaire vueAdversaire;
     private final VuePerso perso;
+    private Controleur controleur;
     
-    public VueComplete()
+    public VueComplete(Controleur c)
     {
+    	controleur = c;
         this.vueAdversaire = new VueAdversaire();
-        this.perso = new VuePerso();
-       
-       this.display(); 
-       
+        this.perso = new VuePerso();       
     }
 
     @Override
@@ -60,9 +61,5 @@ public class VueComplete extends JPanel implements GameVue {
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-  
-
-    
-
 
 }

@@ -41,9 +41,8 @@ public abstract class Jeu {
 	public abstract void finDePartie(); //End of Game 
 	public abstract void save(); //Save Game
 	public abstract void load(); //Load saved game 
-	public void placerBateau(Bateau bateau, List<Point> p,Joueur j) {
+	public void placerBateau(Bateau bateau, ArrayList<Point> p,Joueur j) {
 
 	}
-
 
 }
