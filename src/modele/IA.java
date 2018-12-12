@@ -20,10 +20,9 @@ public class IA extends Joueur {
  public Plateau plateau;
  
 	
-    public IA(int munition, Plateau plateau , List<Bateau> b){
+    public IA(int munition, List<Bateau> b){
        
                  super(munition, b);
-                 this.plateau = plateau;
 	}
     
    private Point getPointAlea()

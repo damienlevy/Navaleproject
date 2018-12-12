@@ -16,7 +16,7 @@ import modele.factory.EpoqueFactory;
  */
 public abstract class Jeu {
 
-     protected final EpoqueFactory epoque ;
+     protected EpoqueFactory epoque ;
     
    
  	public Jeu(EpoqueFactory epoque){
