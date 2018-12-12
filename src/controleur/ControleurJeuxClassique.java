@@ -60,6 +60,7 @@ public class ControleurJeuxClassique implements Controleur{
 	}
 
 	public void placerBateau(Point c, int idJoueur) {
+		boolean valide = true;
 		if(select.get(idJoueur) != null) {
 			ArrayList<Bateau> bateaux = model.getBateauJoueur1();
 			ArrayList<Point> position = new ArrayList<>(5);
@@ -71,15 +72,30 @@ public class ControleurJeuxClassique implements Controleur{
 					taille = bateau.getTaille();
 				}
 			}
-			position.add(c);
+
 			for (int i = 1; i < taille; i++) {
 				if(orientation.get(b.getID()) == 0) {
-					position.add(new Point(c.x+i, c.y));
+					if(c.x+i > 9) {
+						valide = false;
+					}
 				}else {
-					position.add(new Point(c.x, c.y+i));
+					if(c.y+i > 9) {
+						valide = false;
+					}
 				}
+
 			}
-			model.placerBateau(b, position, idJoueur);
+			if(valide) {
+				position.add(c);
+				for (int i = 1; i < taille; i++) {
+					if(orientation.get(b.getID()) == 0) {
+						position.add(new Point(c.x+i, c.y));
+					}else {
+						position.add(new Point(c.x, c.y+i));
+					}
+				}
+				model.placerBateau(b, position, idJoueur);
+			}
 		}
 	}
 }
