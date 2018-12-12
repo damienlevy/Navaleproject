@@ -8,11 +8,11 @@ import modele.Jeu;
 import modele.Joueur;
 import modele.ModelClassique;
 import modele.bateau.Bateau;
-import vues.Vue;
+import vues.GameVue;
 
 public class ControleurJeuxClassique implements Controleur{
 
-	private List<Vue> listVues;
+	private List<GameVue> listVues;
 	private ModelClassique model;
 	private HashMap<Integer, Integer> select;
 	//0 horizontal // 1 vertical
@@ -27,13 +27,13 @@ public class ControleurJeuxClassique implements Controleur{
 
 	@Override
 	public void start(){
-		for (Vue vue : listVues) {
+		for (GameVue vue : listVues) {
 			vue.display();
 		}
 	}
 
 	@Override
-	public void addVue(Vue vue) {
+	public void addVue(GameVue vue) {
 		listVues.add(vue);
 	}
 

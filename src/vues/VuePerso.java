@@ -8,6 +8,7 @@ package vues;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import static vues.Vue.back;
 
 
 
@@ -24,7 +24,7 @@ import static vues.Vue.back;
  * @author TRABELSI
  */
 public class VuePerso extends JPanel implements GameVue {
-  
+    public static Image back;
     private final static int w = 400;
     private final static int h = 400;
     public final static int CaseX = 37;
@@ -90,7 +90,7 @@ public class VuePerso extends JPanel implements GameVue {
         }
       
     } catch (IOException ex) {
-        Logger.getLogger(Vue.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(VuePerso.class.getName()).log(Level.SEVERE, null, ex);
     }
     
 }
