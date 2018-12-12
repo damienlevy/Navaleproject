@@ -42,6 +42,10 @@ public class Plateau {
 		return plateau[x][y];
 	}
 	
+	public Case getCase(Point p) {
+		return plateau[p.x][p.y];
+	}
+	
 	// verfifier si la case est déjà vide avant de placer le bateau
 	public boolean estVide(Case c) {
 		if (c.getidBateau() == -1)

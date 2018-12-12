@@ -8,6 +8,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import vues.GameVue;
+
 import modele.bateau.Bateau;
 import modele.factory.EpoqueFactory;
 /**
@@ -16,29 +18,31 @@ import modele.factory.EpoqueFactory;
  */
 public abstract class Jeu {
 
-     protected EpoqueFactory epoque ;
-    
-   
- 	public Jeu(EpoqueFactory epoque){
-        this.epoque =epoque;
-        /*ArrayList<Bateau> bateauJoueur1;
-        ArrayList<Bateau> bateauJoueur2;
-    	bateauJoueur1 = new ArrayList<>();
-    	addBateau(epoque, bateauJoueur1);
-    	bateauJoueur2 = new ArrayList<>();
-    	this.addBateau(epoque, bateauJoueur2);
-    	this.j1 = new Humain(100,bateauJoueur1);
-    	this.ia = new IA(100,bateauJoueur2);*/
-    }
+	protected final EpoqueFactory epoque ;
+	protected ArrayList<GameVue> vues;
 
-   public abstract void jouer(); //lancer le jeu 
-   public abstract void finDePartie(); //End of Game 
-   public abstract void addVue(); 
-   public abstract void save(); //Save Game
-   public abstract void load(); //Load saved game 
-   public void placerBateau(Bateau bateau, List<Point> p,Joueur j) {
 
-}
-    
-    
+	public Jeu(EpoqueFactory epoque){
+		this.epoque =epoque;
+		this.vues = new ArrayList<>(1);
+	}
+
+	public void addVue(GameVue v){
+		vues.add(v);
+	}
+	
+	public void notifyVue(){
+		for (GameVue v: vues) {
+			v.update();
+		}
+	}
+
+	public abstract void jouer(); //lancer le jeu 
+	public abstract void finDePartie(); //End of Game 
+	public abstract void save(); //Save Game
+	public abstract void load(); //Load saved game 
+	public void placerBateau(Bateau bateau, List<Point> p,Joueur j) {
+
+	}
+
 }

@@ -6,9 +6,7 @@
 package start;
 
 
-import vues.VueAdversaire;
 import vues.VueComplete;
-import vues.VuePerso;
 
 /**
  *
@@ -16,12 +14,12 @@ import vues.VuePerso;
  */
 public class Main { 
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-       VueComplete v= new VueComplete();
-     
-    }
-    
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		VueComplete v= new VueComplete();
+
+	}
+
 }
