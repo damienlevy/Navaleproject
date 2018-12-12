@@ -10,6 +10,7 @@ import java.util.List;
 
 import modele.Case;
 
+
 /**
  * 
  * @author trabels33u
@@ -101,5 +102,11 @@ public class Plateau {
 			this.plateau[x][y].setidBateau(id);
 		}
 	}
+
+    Case getCase(Point p) {
+        return this.plateau[p.x][p.y];
+    }
+
+    
 
 }
