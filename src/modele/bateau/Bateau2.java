@@ -23,7 +23,7 @@ public abstract class Bateau2 implements Bateau{
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return id;
+		return this.id;
 	}
 
 	@Override

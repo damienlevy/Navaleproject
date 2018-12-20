@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import modele.Case;
 import modele.ModelClassique;
 import modele.factory.ModernFactory;
 
@@ -33,10 +35,12 @@ public class VueAdversaire extends JPanel implements GameVue {
     public JPanel adversaire ;
     private BufferedImage para;
     private BufferedImage bat;
-    private ModelClassique model;
+    public  ModelClassique model;
     private BufferedImage boat;
+    private BufferedImage touche;
+    private BufferedImage cercle;
     
-    public VueAdversaire()
+    public VueAdversaire ()
     {
 
         model = new ModelClassique(new ModernFactory());
@@ -57,6 +61,7 @@ public class VueAdversaire extends JPanel implements GameVue {
 
    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+   
     try {
         back = ImageIO.read(new File("./src/vues/images/back.jpg"));
         para = ImageIO.read(new File("./src/vues/images/para.jpg"));
@@ -105,9 +110,24 @@ public class VueAdversaire extends JPanel implements GameVue {
                  if(model.getPlateauIA().plateau[i][j].getidBateau() >= 1)
                      
                  {
+                     
                      g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
                      g.drawImage(boat,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+                     g.drawString((String.valueOf(model.getPlateauIA().plateau[i][j].getidBateau())),i*CaseX+10,j*CaseY+20);
                  }
+                 if(model.getPlateauIA().plateau[i][j].estTouche())
+                 {
+                       touche = ImageIO.read(new File("./src/vues/images/touche.png"));
+                        g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
+                        g.drawImage(touche,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+                 }
+                 if(!model.getPlateauIA().plateau[i][j].estEau())
+                 {
+                       cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));
+                        g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
+                        g.drawImage(cercle,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+                 }
+                 
             }
         }
         
@@ -118,4 +138,5 @@ public class VueAdversaire extends JPanel implements GameVue {
     }
     
 }
+  
 }

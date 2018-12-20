@@ -11,11 +11,13 @@ package modele;
  */
 public class Case {
     private boolean toucher ;
+    private boolean eau ;
     private int idBateau; 
     
     
     public Case(int id )
     {
+        this.eau=true;
         this.toucher = false ; // par defaut 
         this.idBateau = id ; 
     }
@@ -33,7 +35,14 @@ public class Case {
     public boolean estTouche() {
     	return this.toucher;
     }
-    
+    public boolean estEau()
+    {
+        return this.eau;
+    }
+    public void setEautouche()
+    {
+        this.eau=false ;
+    }
     //Return the id of the Naval
     public int getidBateau()
     {
