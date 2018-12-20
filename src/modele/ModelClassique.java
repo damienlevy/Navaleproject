@@ -9,7 +9,12 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.DAOFactory;
+import dao.DAOFactoryCSV;
+import dao.JeuDAO;
+
 import modele.bateau.Bateau;
+import modele.factory.AntiquiteFactory;
 import modele.factory.EpoqueFactory;
 
 
@@ -40,6 +45,9 @@ public class ModelClassique extends Jeu {
 
 	public List<Bateau> getBateauIA() {
 		return ia.getBateau();
+	}
+	public List<Bateau> getBateau(Joueur j){
+		return j.getBateau();
 	}
 
 	public Plateau getPlateauJoueur1() {
@@ -84,7 +92,9 @@ public class ModelClassique extends Jeu {
 	@Override
 	public
 	void save() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		DAOFactoryCSV dao = (DAOFactoryCSV) DAOFactory.getInstance(0);
+		dao.getJEUDAO().save("test", this);
+	
 	}
 
 	@Override
@@ -116,5 +126,11 @@ public class ModelClassique extends Jeu {
 	}
 	public Joueur getIa() {
 		return this.ia;
+	}
+	
+	public static void main(String[] argv){
+		ModelClassique mc = new ModelClassique(new AntiquiteFactory());
+		mc.save();
+		System.out.println("fini");
 	}
 }

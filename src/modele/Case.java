@@ -49,4 +49,10 @@ public class Case {
 		return toucher;
 	}
     
+    public String toString(){
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(this.idBateau).append(",").append(this.toucher);
+    	return sb.toString(); 
+    }
+    
 }

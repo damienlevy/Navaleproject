@@ -7,7 +7,9 @@ import java.awt.Point;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import modele.Case;
 import modele.Jeu;
+import modele.Joueur;
 import modele.ModelClassique;
 import modele.bateau.Bateau;
 
@@ -21,45 +23,70 @@ public class JeuDAOCSV implements JeuDAO {
 	
 	@Override
 	public void save(String name,ModelClassique jeu) {
+		Joueur j = jeu.getj1();
+		Case c = null;
+		name +=".csv";
 		try {
 			String separator = "\n";
 			String separatorArg = ",";
 			FileWriter writer = new FileWriter(name);
 			
-			//type de joueur
-			writer.append(jeu.getj1().getType());
-			writer.append(separator);
-			
-			//bateau joueur 1
-			for(Bateau b : jeu.getBateauJoueur1()) {
-				
-				//id bateau joueur 1
-				writer.append(new Integer(b.getID()).toString());
-				writer.append(separatorArg);
-				
-				//taille bateau
-				writer.append(new Integer(b.getTaille()).toString());
-				writer.append(separatorArg);
-				
-				//position bateau
-				for(Point p : b.getPosition()) {
-					writer.append(p.toString());
-					writer.append(separatorArg);
+			for (int a = 0; a < 2; a++) {
+				// type de joueur j1
+				writer.append(j.getType());
+				System.out.println(j.getType());
+				writer.append(separator);
+
+				// munition restante
+				writer.append(new Integer(j.getMunition()).toString());
+				System.out.println(new Integer(j.getMunition()).toString());
+				writer.append(separator);
+
+				// bateau joueur 1
+				for (Bateau b : jeu.getBateau(j)) {
+
+					// id bateau joueur 1
+					writer.append(new Integer(b.getID()).toString());
+					writer.append(separator);
+
+					// taille bateau
+					writer.append(new Integer(b.getTaille()).toString());
+					writer.append(separator);
+
+					// position bateau
+					for (Point p : b.getPosition()) {
+						writer.append(p.toString());
+						System.out.println(p.toString());
+						writer.append(separator);
+
+					}
+
+					// touche
+					for (Point p : b.getTouche()) {
+						writer.append(p.toString());
+						writer.append(separator);
+
+					}
+					writer.append(separator);
+
+					
+				}
+				//plateau
+				for (int i = 0; i < j.getPlateau().getPlateau().length; i++) {
+					for (int k = 0; k < j.getPlateau().getPlateau()[0].length; k++) {
+						c = j.getPlateau().getCase(i, k);
+						writer.append(c.toString());
+						writer.append(separatorArg);
+					}
+					writer.append(separator);
 				}
 				
-				//touche
-				for(Point p : b.getTouche()) {
-					writer.append(p.toString());
-					writer.append(separatorArg);
-				}
-				
-				/*
-				writer.append();
-				writer.append();*/
-				
+				j = jeu.getIa();				
 			}
 			
-			//writer.append(jeu.getBateauJoueur1())
+
+			writer.flush();
+			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

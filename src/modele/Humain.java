@@ -19,5 +19,12 @@ public class Humain extends Joueur {
 	public Humain(int munition, List<Bateau> b){
 		super(munition, b);
 	}
+
+	
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return "humain";
+	}
     
 }

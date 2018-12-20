@@ -24,7 +24,7 @@ public class IA extends Joueur {
     public IA(int munition, List<Bateau> b){
        
                  super(munition, b);
-                 super.plateau = new Plateau();
+                 //super.plateau = new Plateau();
                  placerBateaux(b);
           
 	}
@@ -111,6 +111,7 @@ public class IA extends Joueur {
                                 for(int i =0 ; i< b.getTaille();i++)
                                 {
                                     super.plateau.plateau[first.x+i][first.y].setidBateau(b.getID());
+                                	
                                     position.add(new Point(first.x+i, first.y));
                                 }
                                placerBateau( b, position);
@@ -147,6 +148,7 @@ public class IA extends Joueur {
    
      public void placerBateau(Bateau b ){
     	b.setPosition(p);
+    	//this.plateau.allocatePosition(b.getID(), p);
     	    	
     }
      public void placerBateaux(List<Bateau> bateaux )
