@@ -79,6 +79,7 @@ public abstract class Joueur {
 	public List<Bateau> getBateau(){
 		return this.bateaux;
 	}
+	public abstract String getType();
 
 
 }

@@ -56,5 +56,8 @@ public abstract class Bateau3_1 implements Bateau{
 		}
 		return b;
 	}
+	public List<Point> getTouche(){
+		return this.touche;
+	}
 
 }

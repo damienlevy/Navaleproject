@@ -4,6 +4,7 @@
 package dao;
 
 import modele.Jeu;
+import modele.ModelClassique;
 
 /**
  * @author levy54u
@@ -11,7 +12,7 @@ import modele.Jeu;
  */
 public interface JeuDAO {
 	
-	public void save();
+	public void save(String name,ModelClassique jeu);
 	public Jeu load();
 
 }

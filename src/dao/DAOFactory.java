@@ -16,6 +16,8 @@ public abstract class DAOFactory {
 		switch(type){
 		case CSV:
 			return DAOFactoryCSV.getInstance();
+			
+			
 		}
 		return null;
 	}

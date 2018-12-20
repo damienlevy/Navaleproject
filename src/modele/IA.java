@@ -164,5 +164,12 @@ public class IA extends Joueur {
         
          }    
     }
+
+
+	@Override
+	public String getType() {
+		return "ia";
+	}
+     
 }
 

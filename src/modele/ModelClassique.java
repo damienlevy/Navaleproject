@@ -107,4 +107,14 @@ public class ModelClassique extends Jeu {
 	private Joueur getOtherJoueur(Joueur j) {		
 		return j.equals(j1) ? ia : j1;
 	}
+	
+	public String typeJoueur(Joueur j) {
+		return j.getType();
+	}
+	public Joueur getj1() {
+		return this.j1;
+	}
+	public Joueur getIa() {
+		return this.ia;
+	}
 }

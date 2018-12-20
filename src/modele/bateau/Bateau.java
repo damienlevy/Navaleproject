@@ -11,6 +11,7 @@ public interface Bateau {
 	public void touche(Point p);
 	public boolean estCoule();
 	public int getTaille();
+	public List<Point> getTouche();
 	
 	
 	
