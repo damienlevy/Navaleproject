@@ -35,13 +35,8 @@ public class ModelClassique extends Jeu {
 		addBateau(epoque, bateauJoueur1);
 		bateauJoueur2 = new ArrayList<>();
 		this.addBateau(epoque, bateauJoueur2);
-		this.j1 = new Humain(100,bateauJoueur1) {
-
-                    @Override
-                    public String getType() {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-                };
+		
+		this.j1 = new Humain(100,bateauJoueur1){};
 		this.ia = new IA(100,bateauJoueur2);
 	}
 
@@ -137,6 +132,6 @@ public class ModelClassique extends Jeu {
 	public static void main(String[] argv){
 		ModelClassique mc = new ModelClassique(new AntiquiteFactory());
 		mc.save();
-		System.out.println("fini");
+		
 	}
 }

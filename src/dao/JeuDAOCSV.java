@@ -34,12 +34,12 @@ public class JeuDAOCSV implements JeuDAO {
 			for (int a = 0; a < 2; a++) {
 				// type de joueur j1
 				writer.append(j.getType());
-				System.out.println(j.getType());
+				
 				writer.append(separator);
 
 				// munition restante
 				writer.append(new Integer(j.getMunition()).toString());
-				System.out.println(new Integer(j.getMunition()).toString());
+				
 				writer.append(separator);
 
 				// bateau joueur 1
@@ -54,22 +54,30 @@ public class JeuDAOCSV implements JeuDAO {
 					writer.append(separator);
 
 					// position bateau
-					for (Point p : b.getPosition()) {
-						writer.append(p.toString());
-						System.out.println(p.toString());
+					if (b.getPosition().isEmpty()) {
+						writer.append("position Null");
 						writer.append(separator);
+					} else {
+						for (Point p : b.getPosition()) {
+							writer.append(p.toString());
+							writer.append(separator);
 
+						}
 					}
-
 					// touche
-					for (Point p : b.getTouche()) {
-						writer.append(p.toString());
+					if (b.getTouche().isEmpty()) {
+						writer.append("touche Null");
+						writer.append(separator);
+
+					} else {
+						for (Point p : b.getTouche()) {
+							writer.append(p.toString());
+							writer.append(separator);
+
+						}
 						writer.append(separator);
 
 					}
-					writer.append(separator);
-
-					
 				}
 				//plateau
 				for (int i = 0; i < j.getPlateau().getPlateau().length; i++) {
