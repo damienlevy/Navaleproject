@@ -19,14 +19,14 @@ import modele.bateau.Bateau;
 public class IA extends Joueur {
  private List<Point> p ;
  
- 
+
 	
     public IA(int munition, List<Bateau> b){
        
                  super(munition, b);
-                 super.plateau = new Plateau();
+               
                  placerBateaux(b);
-          
+                 plateau.afficherPlateau();
 	}
 
     
@@ -34,8 +34,8 @@ public class IA extends Joueur {
    {
        Point p = new Point();
        Random r = new Random();
-       p.x = r.nextInt(9)+1;
-       p.y = r.nextInt(9)+1;
+       p.x = r.nextInt(8)+1;
+       p.y = r.nextInt(8)+1;
       // p.x =1 + (int)(Math.random() * ((11 - 1) + 1));
        //p.y =1 + (int)(Math.random() * ((11 - 1) + 1));
        return p;
@@ -61,9 +61,9 @@ public class IA extends Joueur {
        boolean cont =true;
         while(i<b.getTaille()&& cont== true)
               {
-               if(super.plateau.estVide(super.plateau.plateau[first.x+i][first.y]))
+               if(plateau.estVide(super.plateau.plateau[first.x+i][first.y]))
                  i++;
-               else if(!super.plateau.estVide(super.plateau.plateau[first.x+i][first.y]))
+               else if(!plateau.estVide(plateau.plateau[first.x+i][first.y]))
                { cont = false ; return false ;}
                else 
                    return false;
@@ -77,7 +77,7 @@ public class IA extends Joueur {
        boolean cont =  true ;
         while(i < b.getTaille() && cont ==true)
               {
-               if(super.plateau.estVide(super.plateau.plateau[first.x][first.y+i]))
+               if(plateau.estVide(plateau.plateau[first.x][first.y+i]))
                {
                    i++;
                    cont=true; 
@@ -108,7 +108,7 @@ public class IA extends Joueur {
                    System.out.println(bd);
                             if(positionEstVideH(b,first))
                             {
-                                for(int i =0 ; i< b.getTaille();i++)
+                                for(int i =0 ; i<b.getTaille();i++)
                                 {
                                     super.plateau.plateau[first.x+i][first.y].setidBateau(b.getID());
                                     position.add(new Point(first.x+i, first.y));
@@ -127,7 +127,8 @@ public class IA extends Joueur {
                            {
                                for(int i =0 ; i< b.getTaille();i++)
                                {
-                                   super.plateau.plateau[first.x][first.y+i].setidBateau(b.getID());
+                                   plateau.plateau[first.x][first.y+i].setidBateau(b.getID());
+                                     System.out.println("id bateau " +plateau.plateau[first.x][first.y+i].getidBateau());
                                    position.add(new Point(first.x, first.y+i));
                                }
                              placerBateau( b,position);
@@ -147,6 +148,7 @@ public class IA extends Joueur {
    
      public void placerBateau(Bateau b ){
     	b.setPosition(p);
+       // this.plateau.allocatePosition(b.getID(), p);
     	    	
     }
      public void placerBateaux(List<Bateau> bateaux )
@@ -161,7 +163,7 @@ public class IA extends Joueur {
                      pos = positionBateau(b);
              }
             
-        
+       
          }    
     }
 

@@ -110,7 +110,17 @@ public class Plateau {
 	}
 
 
-    
+    public void afficherPlateau()
+    {
+           for(int i = 0 ; i< this.Height-1 ; i++)
+         {    System.out.println(i);
+             for(int j=0; j<this.Width-1 ;j++)
+             { 
+                 System.out.print(this.plateau[i][j].getidBateau());
+             }
+             System.out.println();
+         }
+    }
     
 
     

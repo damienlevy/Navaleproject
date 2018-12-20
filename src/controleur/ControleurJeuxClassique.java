@@ -1,12 +1,14 @@
 package controleur;
 
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import modele.Jeu;
+import modele.Case;
 import modele.Joueur;
 import modele.ModelClassique;
+import modele.Plateau;
 import modele.bateau.Bateau;
 import vues.GameVue;
 
@@ -15,6 +17,7 @@ public class ControleurJeuxClassique implements Controleur{
 	private List<GameVue> listVues;
 	private ModelClassique model;
 	private HashMap<Joueur, Integer> select;
+        public final Plateau plateau;
 	//0 horizontal // 1 vertical
 	private HashMap<Integer, Integer> orientation;
 
@@ -23,6 +26,7 @@ public class ControleurJeuxClassique implements Controleur{
 		listVues    = new ArrayList<>();
 		select      = new HashMap<>();
 		orientation = new HashMap<>();
+                plateau= model.getPlateauIA();
 	}
 
 	@Override
@@ -98,4 +102,6 @@ public class ControleurJeuxClassique implements Controleur{
 			}
 		}
 	}
+        
 }
+
