@@ -36,17 +36,15 @@ public class VueComplete extends JPanel implements GameVue {
     public VueComplete(Controleur c)
     {
     	controleur = c;
-        this.vueAdversaire = new VueAdversaire();
+        this.vueAdversaire = new VueAdversaire(c);
         this.perso = new VuePerso();     
         vueAdversaire.addMouseListener(new MouseAdapter(){
 
    @Override
    public void mouseClicked(MouseEvent e) {
     
-          
-   Point c = chercherCase(e.getX()/37, e.getY()/37);
-   
-  
+  chercherCase(e.getX()/37, e.getY()/37);
+ 
 }
   
   
@@ -79,24 +77,17 @@ public class VueComplete extends JPanel implements GameVue {
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-  public Point chercherCase(int x, int y) {
+  public void chercherCase(int x, int y) {
          Point p = new Point(x,y);
-         System.out.println("X : "+x+" Y : "+y);
+    
          if( this.vueAdversaire.model.getPlateauIA().plateau[x][y].getidBateau() > 0)
          { this.vueAdversaire.model.getPlateauIA().plateau[x][y].toucher();  
          
          }
          else 
                 this.vueAdversaire.model.getPlateauIA().plateau[x][y].setEautouche();
-         System.out.println(  this.vueAdversaire.model.getPlateauIA().plateau[x][y].getidBateau());
-         if( ! this.vueAdversaire.model.getPlateauIA().estVide(p))
-         {
-            System.out.println(  this.vueAdversaire.model.getPlateauIA().plateau[x][y].getidBateau()+" est touché");
-           
-         }
-          System.out.print(  this.vueAdversaire.model.getPlateauIA().plateau[x][y].estTouche()+"");
-       // this.model.getPlateauIA().afficherPlateau();
+         
          this.vueAdversaire.repaint();
-        return p;
+      
     }
 }

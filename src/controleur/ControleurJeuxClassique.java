@@ -27,6 +27,7 @@ public class ControleurJeuxClassique implements Controleur{
 		select      = new HashMap<>();
 		orientation = new HashMap<>();
                 plateau= model.getPlateauIA();
+                plateau.afficherPlateau();
 	}
 
 	@Override
@@ -102,6 +103,15 @@ public class ControleurJeuxClassique implements Controleur{
 			}
 		}
 	}
+         @Override
+        public ModelClassique getModele()
+        {
+            return this.model;
+        }
+
+   
+    
+           
         
 }
 

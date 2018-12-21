@@ -26,7 +26,7 @@ public class IA extends Joueur {
                  super(munition, b);
                
                  placerBateaux(b);
-                 plateau.afficherPlateau();
+                 
 	}
 
     
@@ -98,19 +98,15 @@ public class IA extends Joueur {
          //point alea
           Point first ;
           first= getPointAlea();
-          System.out.println(first);
-          System.out.println(b.getTaille());
           int orientation = 1+(int)(Math.random() * (( 2 - 1 )+1)); // 1 horizontal 2 vertical
-          boolean bd ;
           switch(orientation)
           {  
-              case 1 : if(bd= verfierPoitionHorizontal(b ,first)){
-                   System.out.println(bd);
+              case 1 : if( verfierPoitionHorizontal(b ,first)){
                             if(positionEstVideH(b,first))
                             {
                                 for(int i =0 ; i<b.getTaille();i++)
                                 {
-                                    super.plateau.plateau[first.x+i][first.y].setidBateau(b.getID());
+                                    plateau.plateau[first.x+i][first.y].setidBateau(b.getID());
                                     position.add(new Point(first.x+i, first.y));
                                 }
                                placerBateau( b, position);
@@ -128,7 +124,6 @@ public class IA extends Joueur {
                                for(int i =0 ; i< b.getTaille();i++)
                                {
                                    plateau.plateau[first.x][first.y+i].setidBateau(b.getID());
-                                     System.out.println("id bateau " +plateau.plateau[first.x][first.y+i].getidBateau());
                                    position.add(new Point(first.x, first.y+i));
                                }
                              placerBateau( b,position);
@@ -148,7 +143,6 @@ public class IA extends Joueur {
    
      public void placerBateau(Bateau b ){
     	b.setPosition(p);
-       // this.plateau.allocatePosition(b.getID(), p);
     	    	
     }
      public void placerBateaux(List<Bateau> bateaux )
@@ -166,8 +160,6 @@ public class IA extends Joueur {
        
          }    
     }
-
-
 	@Override
 	public String getType() {
 		return "ia";
