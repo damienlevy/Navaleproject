@@ -23,7 +23,6 @@ public class IA extends Joueur {
 
 	public IA(int munition, List<Bateau> b){
 		super(munition, b);
-		plateau.afficherPlateau();
 		placerBateaux();
 	}
 
@@ -160,14 +159,11 @@ public class IA extends Joueur {
 		//point alea
 		Point first ;
 		first= getPointAlea();
-		System.out.println(first);
-		System.out.println(b.getTaille());
 		int orientation = 1+(int)(Math.random() * (( 2 - 1 )+1)); // 1 horizontal 2 vertical
 		boolean bd ;
 		switch(orientation)
 		{  
 		case 1 : if(bd= verfierPoitionHorizontal(b ,first)){
-			System.out.println(bd);
 			if(positionEstVideH(b,first))
 			{
 				for(int i =0 ; i<b.getTaille();i++)
@@ -177,6 +173,7 @@ public class IA extends Joueur {
 					position.add(new Point(first.x+i, first.y));
 				}
 				placerBateau( b, position);
+				setPositionBateau(b, position);
 				return true ;
 			}
 			else return false ;
@@ -191,11 +188,10 @@ public class IA extends Joueur {
 				for(int i =0 ; i< b.getTaille();i++)
 				{
 					plateau.plateau[first.x][first.y+i].setidBateau(b.getID());
-					System.out.println("id bateau " +plateau.plateau[first.x][first.y+i].getidBateau());
 					position.add(new Point(first.x, first.y+i));
 				}
 				placerBateau( b,position);
-				b.setPosition(position);
+				setPositionBateau(b, position);
 				return true ;
 			}
 			else return false ;
@@ -205,16 +201,21 @@ public class IA extends Joueur {
 		default : return false ; 
 
 		}
-
-
-
+	}
+	
+	public void setPositionBateau(Bateau b, ArrayList<Point> position) {
+		for(Bateau bat : bateaux) {
+			if(bat.getID() == b.getID()) {
+				bat.setPosition(position);
+			}
+		}
 	}
 	
 	public void placerBateaux()
 	{
 		for(Bateau b : bateaux )
 		{
-			boolean pos = positionBateau( b);
+			boolean pos = positionBateau(b);
 			if(pos == false )
 			{
 				while(pos==false ) {
