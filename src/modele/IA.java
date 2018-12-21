@@ -30,6 +30,70 @@ public class IA extends Joueur {
 	}
 
     
+    public Point tirerRandom(Plateau p) {
+    	Point cible;
+    	Random r =  new Random();
+    	Case[][] plateau  = p.getPlateau();
+    	cible = new Point(r.nextInt(9)+1, r.nextInt(9)+1);
+    	while(plateau[cible.x][cible.y].estTouche()){
+    		cible = new Point(r.nextInt(9)+1, r.nextInt(9)+1);	
+    	}
+    	return cible;
+    }
+    
+    public Point tirerCroix(Plateau p) {
+    	ArrayList<Point> lp = getToucheBateau(p);
+    	ArrayList<Point> toucher = getToucher(p);
+    	Point cible = tirerRandom(p);
+    	Point tempo;
+    	Case[][] plateau  = p.getPlateau();
+    	for (Point point : lp) {
+    		tempo = new Point(point.x-1, point.y );
+			if(point.x-1 > 0 && !toucher.contains(tempo)) {
+				cible = tempo;
+			}
+			tempo = new Point(point.x+1, point.y );
+			if(point.x+1 < 12 && !toucher.contains(tempo)) {
+				cible = tempo;
+			}
+			tempo = new Point(point.x, point.y-1 );
+			if(point.y-1 > 0 && !toucher.contains(tempo)) {
+				cible = tempo;
+			}
+			tempo = new Point(point.x, point.y+1 );
+			if(point.y+1 < 12 && !toucher.contains(tempo)) {
+				cible = tempo;
+			}
+		}
+    	return cible;
+    }
+    
+    private ArrayList<Point> getToucher(Plateau p) {
+    	ArrayList<Point> lp = new ArrayList<>();
+    	Case[][] plateau = p.getPlateau();
+    	for (int i = 0; i < plateau.length; i++) {
+			for (int j = 0; j < plateau[0].length; j++) {
+				if(plateau[i][j].estTouche()){
+					lp.add(new Point(i,j));
+				}
+			}
+		}
+    	return lp;
+    }
+    
+    private ArrayList<Point> getToucheBateau(Plateau p){
+    	ArrayList<Point> lp = new ArrayList<>();
+    	Case[][] plateau = p.getPlateau();
+    	for (int i = 0; i < plateau.length; i++) {
+			for (int j = 0; j < plateau[0].length; j++) {
+				if(plateau[i][j].estTouche() && plateau[i][j].getidBateau() != -1){
+					lp.add(new Point(i,j));
+				}
+			}
+		}
+    	return lp;
+    }
+    
    private Point getPointAlea()
    {
        Point p = new Point();
