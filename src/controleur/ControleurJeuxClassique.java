@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import modele.Case;
+import modele.Jeu;
 import modele.Joueur;
 import modele.ModelClassique;
 import modele.Plateau;
@@ -21,13 +22,16 @@ public class ControleurJeuxClassique implements Controleur{
 	//0 horizontal // 1 vertical
 	private HashMap<Integer, Integer> orientation;
 
-	public ControleurJeuxClassique(ModelClassique model) {
-		this.model  = model; 
+	public ControleurJeuxClassique(Jeu model) {
+		this.model  = (ModelClassique) model; 
 		listVues    = new ArrayList<>();
 		select      = new HashMap<>();
 		orientation = new HashMap<>();
-                plateau= model.getPlateauIA();
-                plateau.afficherPlateau();
+
+          
+
+                plateau= this.model.getPlateauIA();
+
 	}
 
 	@Override

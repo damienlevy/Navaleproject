@@ -26,6 +26,10 @@ public abstract class Jeu {
 		this.epoque =epoque;
 		this.vues = new ArrayList<>(1);
 	}
+	
+
+	
+
 
 	public void addVue(GameVue v){
 		vues.add(v);

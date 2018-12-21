@@ -45,5 +45,9 @@ public class AntiquiteFactory implements EpoqueFactory {
 	public Bateau createBateau5() {
 		return new BateauAntique5(id++);
 	}
+	
+	public String toString() {
+		return "AntiquiteFactory";
+	}
 
 }

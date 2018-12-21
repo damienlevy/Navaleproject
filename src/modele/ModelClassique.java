@@ -9,7 +9,12 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.DAOFactory;
+import dao.DAOFactoryCSV;
+import dao.JeuDAO;
+
 import modele.bateau.Bateau;
+import modele.factory.AntiquiteFactory;
 import modele.factory.EpoqueFactory;
 
 
@@ -30,14 +35,16 @@ public class ModelClassique extends Jeu {
 		addBateau(epoque, bateauJoueur1);
 		bateauJoueur2 = new ArrayList<>();
 		this.addBateau(epoque, bateauJoueur2);
-		this.j1 = new Humain(100,bateauJoueur1) {
-
-                    @Override
-                    public String getType() {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-                };
+		
+		this.j1 = new Humain(100,bateauJoueur1);
 		this.ia = new IA(100,bateauJoueur2);
+	}
+	
+	public ModelClassique(EpoqueFactory e,Joueur j1 , Joueur j2) {
+		super(e);
+		this.j1 = j1;
+		this.ia = j2;
+		
 	}
 
 	public List<Bateau> getBateauJoueur1() {
@@ -46,6 +53,9 @@ public class ModelClassique extends Jeu {
 
 	public List<Bateau> getBateauIA() {
 		return ia.getBateau();
+	}
+	public List<Bateau> getBateau(Joueur j){
+		return j.getBateau();
 	}
 
 	public Plateau getPlateauJoueur1() {
@@ -90,7 +100,9 @@ public class ModelClassique extends Jeu {
 	@Override
 	public
 	void save() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		DAOFactoryCSV dao = (DAOFactoryCSV) DAOFactory.getInstance(0);
+		dao.getJEUDAO().save("test", this);
+	
 	}
 
 	@Override
@@ -122,5 +134,33 @@ public class ModelClassique extends Jeu {
 	}
 	public Joueur getIa() {
 		return this.ia;
+	}
+	
+	public static void main(String[] argv){
+		ModelClassique mc = new ModelClassique(new AntiquiteFactory());
+		int i = 1;
+		int j = 2;
+		/*for(Bateau b : mc.getBateauJoueur1()) {	
+			System.out.println("OKKKKKKK");
+			i++;
+			j++;
+		ArrayList<Point> l = new ArrayList<Point>();
+		l.add(new Point(i,j));
+		i++;
+		l.add(new Point(i,j));
+		mc.placerBateau(b,l ,mc.getj1());
+		}*/
+		
+		
+		/*
+		l = new ArrayList<>();
+		l.add(new Point(2, 3));
+		l.add(new Point(3, 3));
+		l.add(new Point(4, 3));
+		mc.placerBateau(mc.getBateauJoueur1().get(1),l ,mc.getj1());*/
+		
+		mc.save();
+		System.out.println("OKKKKKKK");
+		
 	}
 }

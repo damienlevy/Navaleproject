@@ -15,7 +15,7 @@ public class DAOFactoryCSV extends DAOFactory{
 		return instance;
 	}
 	
-	public JeuDAO getJEUDAO(){
+	public static JeuDAO getJEUDAO(){
 		return JeuDAOCSV.getInstance();
 	}
 
