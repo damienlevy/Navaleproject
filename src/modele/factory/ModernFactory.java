@@ -52,4 +52,7 @@ public class ModernFactory implements EpoqueFactory {
 		return new BateauModerne5(id++);
 	}
 
+	public String toString() {
+		return "ModernFactory";
+	}
 }

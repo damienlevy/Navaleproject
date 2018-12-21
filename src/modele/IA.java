@@ -150,7 +150,7 @@ public class IA extends Joueur {
      public void placerBateau(Bateau b ){
     	b.setPosition(p);
 
-       // this.plateau.allocatePosition(b.getID(), p);
+    	//this.plateau.allocatePosition(b.getID(), p);
     	    	
     }
      public void placerBateaux(List<Bateau> bateaux )

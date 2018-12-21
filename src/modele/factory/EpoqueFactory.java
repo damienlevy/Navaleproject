@@ -16,4 +16,5 @@ public interface EpoqueFactory {
 	public Bateau createBateau3_2();
 	public Bateau createBateau4();
 	public Bateau createBateau5();
+	
 }

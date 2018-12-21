@@ -13,7 +13,7 @@ import modele.bateau.*;
  *
  * @author trabels33u
  */
-public abstract class Humain extends Joueur {
+public class Humain extends Joueur {
 
  
 	public Humain(int munition, List<Bateau> b){

@@ -21,6 +21,7 @@ public class JeuDAOCSV implements JeuDAO {
 	private static final JeuDAOCSV instance = new JeuDAOCSV();
 
 	
+	
 	@Override
 	public void save(String name,ModelClassique jeu) {
 		Joueur j = jeu.getj1();
@@ -30,6 +31,8 @@ public class JeuDAOCSV implements JeuDAO {
 			String separator = "\n";
 			String separatorArg = ",";
 			FileWriter writer = new FileWriter(name);
+			
+			//writer.append(jeu.getEpoque());
 			
 			for (int a = 0; a < 2; a++) {
 				// type de joueur j1
@@ -55,23 +58,29 @@ public class JeuDAOCSV implements JeuDAO {
 
 					// position bateau
 					if (b.getPosition().isEmpty()) {
-						writer.append("position Null");
+						writer.append("Null");
 						writer.append(separator);
 					} else {
 						for (Point p : b.getPosition()) {
-							writer.append(p.toString());
+							//writer.append(p.toString());
+							writer.append(new Integer(p.x).toString());
+							writer.append(separatorArg);
+							writer.append(new Integer(p.y).toString());
 							writer.append(separator);
 
 						}
 					}
 					// touche
 					if (b.getTouche().isEmpty()) {
-						writer.append("touche Null");
+						writer.append("Null");
 						writer.append(separator);
 
 					} else {
 						for (Point p : b.getTouche()) {
-							writer.append(p.toString());
+							writer.append(new Integer(p.x).toString());
+							writer.append(separatorArg);
+							writer.append(new Integer(p.y).toString());
+							//writer.append(p.toString());
 							writer.append(separator);
 
 						}
@@ -104,11 +113,12 @@ public class JeuDAOCSV implements JeuDAO {
 	@Override
 	public Jeu load() {
 		
+		
 		return null;
 	}
 
 	public static JeuDAO getInstance() {
-		// TODO Auto-generated method stub
+		
 		return instance;
 	}
 
