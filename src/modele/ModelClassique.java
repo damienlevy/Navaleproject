@@ -39,10 +39,13 @@ public class ModelClassique extends Jeu {
 		this.j1 = new Humain(100,bateauJoueur1);
 		this.ia = new IA(100,bateauJoueur2);
 	}
-	/*public ModelClassique(Joueur j1 , Joueur j2) {
+	
+	public ModelClassique(EpoqueFactory e,Joueur j1 , Joueur j2) {
+		super(e);
+		this.j1 = j1;
+		this.ia = j2;
 		
-		
-	}*/
+	}
 
 	public List<Bateau> getBateauJoueur1() {
 		return j1.getBateau();
@@ -137,7 +140,8 @@ public class ModelClassique extends Jeu {
 		ModelClassique mc = new ModelClassique(new AntiquiteFactory());
 		int i = 1;
 		int j = 2;
-		for(Bateau b : mc.getBateauJoueur1()) {	
+		/*for(Bateau b : mc.getBateauJoueur1()) {	
+			System.out.println("OKKKKKKK");
 			i++;
 			j++;
 		ArrayList<Point> l = new ArrayList<Point>();
@@ -145,17 +149,18 @@ public class ModelClassique extends Jeu {
 		i++;
 		l.add(new Point(i,j));
 		mc.placerBateau(b,l ,mc.getj1());
-		}
+		}*/
 		
 		
-		System.out.println(mc.getBateauJoueur1().get(0).getPosition());
 		/*
 		l = new ArrayList<>();
 		l.add(new Point(2, 3));
 		l.add(new Point(3, 3));
 		l.add(new Point(4, 3));
 		mc.placerBateau(mc.getBateauJoueur1().get(1),l ,mc.getj1());*/
+		
 		mc.save();
+		System.out.println("OKKKKKKK");
 		
 	}
 }

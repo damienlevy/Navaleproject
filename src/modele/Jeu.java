@@ -28,6 +28,9 @@ public abstract class Jeu {
 	}
 	
 
+	
+
+
 	public void addVue(GameVue v){
 		vues.add(v);
 	}

@@ -27,6 +27,11 @@ public abstract class Joueur {
 		this.bateaux = b;
 	}
 
+	public Joueur(int munition,List<Bateau> b,Plateau p){
+		this.munition = munition;
+		this.plateau = p;
+		this.bateaux = b;
+	}
 
 	public int getMunition(){
 		return this.munition;

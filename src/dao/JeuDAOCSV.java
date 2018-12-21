@@ -32,8 +32,8 @@ public class JeuDAOCSV implements JeuDAO {
 			String separatorArg = ",";
 			FileWriter writer = new FileWriter(name);
 			
-			//writer.append(jeu.getEpoque());
-			
+			writer.append(jeu.getEpoque().toString());
+			writer.append(separator);
 			for (int a = 0; a < 2; a++) {
 				// type de joueur j1
 				writer.append(j.getType());
@@ -110,9 +110,9 @@ public class JeuDAOCSV implements JeuDAO {
 
 	}
 
-	@Override
-	public Jeu load() {
+	public Jeu load(String inputFileName) {
 		
+		//ModelClassique mc = new ModelClassique(null, joueur1 , joueur2);
 		
 		return null;
 	}
