@@ -218,6 +218,8 @@ public class IA extends Joueur {
 		}
 	}
 	
+
+
 	public void placerBateaux()
 	{
 		for(Bateau b : bateaux )

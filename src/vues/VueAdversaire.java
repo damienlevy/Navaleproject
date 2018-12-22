@@ -5,6 +5,7 @@
  */
 package vues;
 
+import controleur.Controleur;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -40,10 +41,10 @@ public class VueAdversaire extends JPanel implements GameVue {
     private BufferedImage touche;
     private BufferedImage cercle;
     
-    public VueAdversaire ()
+    public VueAdversaire (Controleur c)
     {
 
-        model = new ModelClassique(new ModernFactory());
+        model = c.getModele();
         this.display();
     }
 
@@ -66,8 +67,10 @@ public class VueAdversaire extends JPanel implements GameVue {
         back = ImageIO.read(new File("./src/vues/images/back.jpg"));
         para = ImageIO.read(new File("./src/vues/images/para.jpg"));
         bat = ImageIO.read(new File("./src/vues/images/bateau.png"));
-         boat = ImageIO.read(new File("./src/vues/images/boat.png"));
+        boat = ImageIO.read(new File("./src/vues/images/boat.png"));
         Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
+        touche = ImageIO.read(new File("./src/vues/images/touche.png"));
+        cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));
         
         for( int i=0 ; i <= (w/CaseX); i++ )
         {
@@ -114,16 +117,17 @@ public class VueAdversaire extends JPanel implements GameVue {
                      g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
                      g.drawImage(boat,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
                      g.drawString((String.valueOf(model.getPlateauIA().plateau[i][j].getidBateau())),i*CaseX+10,j*CaseY+20);
+                         g.drawImage(back,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
                  }
                  if(model.getPlateauIA().plateau[i][j].estTouche())
                  {
-                       touche = ImageIO.read(new File("./src/vues/images/touche.png"));
+                     
                         g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
                         g.drawImage(touche,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
                  }
                  if(!model.getPlateauIA().plateau[i][j].estEau())
                  {
-                       cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));
+                     
                         g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
                         g.drawImage(cercle,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
                  }
