@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vues;
 
 import controleur.Controleur;
@@ -22,8 +17,6 @@ import static vues.VueAdversaire.CaseX;
 import static vues.VueAdversaire.CaseY;
 import static vues.VueAdversaire.back;
 
-
-
 /**
  *
  * @author TRABELSI
@@ -33,10 +26,11 @@ public class VuePerso extends JPanel implements GameVue {
 	private final static int w = 400;
 	private final static int h = 400;
 	public final static int CaseX = 37;
-	public final static int CaseY =37   ;
-	public JPanel perso ;
+	public final static int CaseY = 37;
+	public JPanel perso;
 	private BufferedImage para;
 	private BufferedImage bateau;
+
         private BufferedImage check;
         private BufferedImage no;
         private BufferedImage[] fleches ;
@@ -54,6 +48,7 @@ public class VuePerso extends JPanel implements GameVue {
 	}
 
 	@Override
+
 	public void display() {  
             
 		perso = new JPanel();
@@ -68,7 +63,7 @@ public class VuePerso extends JPanel implements GameVue {
             } catch (IOException ex) {
                 Logger.getLogger(VuePerso.class.getName()).log(Level.SEVERE, null, ex);
             }
-	}
+        }
 
 	@Override
 	public void update() {
@@ -81,37 +76,35 @@ public class VuePerso extends JPanel implements GameVue {
 			back = ImageIO.read(new File("./src/vues/images/back.jpg"));
 			para = ImageIO.read(new File("./src/vues/images/para.jpg"));
 			bateau = ImageIO.read(new File("./src/vues/images/bateau.png"));
-                        no = ImageIO.read(new File("./src/vues/images/no.png"));
+                             no = ImageIO.read(new File("./src/vues/images/no.png"));
 			check = ImageIO.read(new File("./src/vues/images/checkp.png"));
                         boat = ImageIO.read(new File("./src/vues/images/boat.png"));
 			Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
 			for( int i=0 ; i <= (w/CaseX); i++ )
 			{
 
-				for(int j = 0 ; j <=h/CaseY ; j++)
-				{
-					g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY); 
-					g.drawImage(back,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
-					if(i==0 && j==0)
-					{
-						g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY); 
-						g.drawImage(bateau,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
-					}
-					if(i==0 && j>= 1)
-					{
-						g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY); 
-						g.drawImage(para,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+		
 
-						g.setFont(font );
-						String c = Character.toString((char)(65 + ((j-1)/26)*6 + (j-1)));
-						g.drawString(c,i*CaseX+10,j*CaseY+20);
+				for (int j = 0; j <= h / CaseY; j++) {
+					g.drawRect(i * CaseX, j * CaseY, CaseX, CaseY);
+					g.drawImage(back, i * CaseX, j * CaseY, CaseX - 1, CaseY - 1, this);
+					if (i == 0 && j == 0) {
+						g.drawRect(i * CaseX, j * CaseY, CaseX, CaseY);
+						g.drawImage(bateau, i * CaseX, j * CaseY, CaseX - 1, CaseY - 1, this);
 					}
-					if(j==0 && i>= 1)
-					{
-						g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY); 
-						g.drawImage(para,i*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
-						g.setFont(font );
-						g.drawString(String.valueOf(i),i*CaseX+10,j*CaseY+20);
+					if (i == 0 && j >= 1) {
+						g.drawRect(i * CaseX, j * CaseY, CaseX, CaseY);
+						g.drawImage(para, i * CaseX, j * CaseY, CaseX - 1, CaseY - 1, this);
+
+						g.setFont(font);
+						String c = Character.toString((char) (65 + ((j - 1) / 26) * 6 + (j - 1)));
+						g.drawString(c, i * CaseX + 10, j * CaseY + 20);
+					}
+					if (j == 0 && i >= 1) {
+						g.drawRect(i * CaseX, j * CaseY, CaseX, CaseY);
+						g.drawImage(para, i * CaseX, j * CaseY, CaseX - 1, CaseY - 1, this);
+						g.setFont(font);
+						g.drawString(String.valueOf(i), i * CaseX + 10, j * CaseY + 20);
 					}
 				}
 			}

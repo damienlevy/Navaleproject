@@ -25,6 +25,9 @@ public class IA extends Joueur {
 		super(munition, b);
 		placerBateaux();
 	}
+	public IA(int munition, List<Bateau>b,Plateau p) {
+		super(munition,b,p);
+	}
 
 
 	public Point tirerRandom(Plateau p) {

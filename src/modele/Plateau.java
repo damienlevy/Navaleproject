@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele;
 
 import java.awt.Point;
 import java.util.List;
 
 import modele.Case;
-
 
 /**
  * 
@@ -26,7 +20,8 @@ public class Plateau {
 		plateau = new Case[Width][Height];
 		this.initialiser();
 	}
-	public Plateau(Case[][] plateau){
+
+	public Plateau(Case[][] plateau) {
 		this.setPlateau(plateau);
 	}
 
@@ -38,40 +33,42 @@ public class Plateau {
 		}
 
 	}
-	public Case[][] getPlateau(){
+
+	public Case[][] getPlateau() {
 		return this.plateau;
 	}
-	
+
 	public void libererCase(Point p) {
 		Case c = getCase(p);
 		c.setidBateau(-1);
 	}
-	public void setPlateau(Case[][] plateau){
+
+	public void setPlateau(Case[][] plateau) {
 		this.plateau = plateau;
 	}
 
 	public Case getCase(Point p) {
 		return plateau[p.x][p.y];
 	}
-	
+
 	public Case getCase(int x, int y) {
 		return plateau[x][y];
 	}
-	
+
 	// verfifier si la case est déjà vide avant de placer le bateau
 	public boolean estVide(Case c) {
 		if (c.getidBateau() == -1)
 			return true;
 		return false;
 	}
-	
+
 	public boolean estVide(Point p) {
 		boolean b = false;
 		int x = (int) p.getX();
 		int y = (int) p.getY();
-		
-		if(this.estVide(this.getCase(x, y))) {
-			b=true;
+
+		if (this.estVide(this.getCase(x, y))) {
+			b = true;
 		}
 		return b;
 	}
@@ -94,36 +91,27 @@ public class Plateau {
 	}
 
 	public void allocatePosition(int id, List<Point> p) {
-		/*int i = p[0].x;
-		int j = p[0].y;
-		while (i <= p[1].x) {
-			while (j <= p[2].y) {
-				this.plateau[i][j] = new Case(id);
-			}
-		}*/
-		int x = 0; int y = 0;
-		for(Point point : p){
+		/*
+		 * int i = p[0].x; int j = p[0].y; while (i <= p[1].x) { while (j <= p[2].y) {
+		 * this.plateau[i][j] = new Case(id); } }
+		 */
+		int x = 0;
+		int y = 0;
+		for (Point point : p) {
 			x = (int) point.getX();
 			y = (int) point.getY();
 			this.plateau[x][y].setidBateau(id);
 		}
 	}
 
-
-    public void afficherPlateau()
-    {
-           for(int i = 0 ; i< this.Height-1 ; i++)
-         {    System.out.println(i);
-             for(int j=0; j<this.Width-1 ;j++)
-             { 
-                 System.out.print(this.plateau[i][j].getidBateau());
-             }
-             System.out.println();
-         }
-    }
-    
-    
-
-    
+	public void afficherPlateau() {
+		for (int i = 0; i < this.Height - 1; i++) {
+			System.out.println(i);
+			for (int j = 0; j < this.Width - 1; j++) {
+				System.out.print(this.plateau[i][j].getidBateau());
+			}
+			System.out.println();
+		}
+	}
 
 }

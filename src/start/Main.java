@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package start;
 
 
@@ -36,7 +32,7 @@ public class Main {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		String[] choix = {"Load", "Antiquite", "Moderne"};
+		String[] choix = { "Antiquite", "Moderne","Load"};
 	    JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
 	    String nom = (String)jop.showInputDialog(null, 
 	      "Veuillez indiquer le mode de lancement",
@@ -48,15 +44,15 @@ public class Main {
 	    
 	    Jeu model;
 	    switch (nom) {
-			case "Load":
-				DAOFactoryCSV dao =(DAOFactoryCSV) DAOFactory.getInstance(0);
-				model =  dao.getJEUDAO().load(fileChooser());
-				break;
 			case "Antiquite" :
 				model = new ModelClassique(new AntiquiteFactory());
 				break;
 			case "Moderne" :
 				model = new ModelClassique(new ModernFactory());
+				break;
+			case "Load":
+				DAOFactoryCSV dao =(DAOFactoryCSV) DAOFactory.getInstance(0);
+				model =  dao.getJEUDAO().load(fileChooser());
 				break;
 			default:
 				model = new ModelClassique(new ModernFactory());

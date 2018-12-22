@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao;
 
 /**
@@ -11,13 +8,12 @@ public abstract class DAOFactory {
 
 	private static final int CSV = 0;
 
-	public static DAOFactory getInstance(int type){
-		
-		switch(type){
+	public static DAOFactory getInstance(int type) {
+
+		switch (type) {
 		case CSV:
 			return DAOFactoryCSV.getInstance();
-			
-			
+
 		}
 		return null;
 	}

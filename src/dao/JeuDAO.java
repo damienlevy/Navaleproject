@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao;
 
 import modele.Jeu;
@@ -11,8 +8,9 @@ import modele.ModelClassique;
  *
  */
 public interface JeuDAO {
-	
-	public void save(String name,ModelClassique jeu);
+
+	public void save(String name, ModelClassique jeu);
+
 	public Jeu load(String inputFileName);
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vues;
 
 import java.awt.BorderLayout;
@@ -21,13 +16,12 @@ import java.util.List;
 import modele.Case;
 import modele.bateau.Bateau;
 
-
-
 /**
  *
  * @author TRABELSI
  */
 public class VueComplete extends JPanel implements GameVue {
+
     public JFrame Game ;
     public final static int Width = 500;
     public final static  int Height = 900;
@@ -163,11 +157,11 @@ public class VueComplete extends JPanel implements GameVue {
                 nbBateau++;
                          return true;
                       }
-                      if(position== 2)
+                      if(position== 2 && ((i0+1)-b.getTaille())>0)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
-                          controleur.getModele().getPlateauJoueur1().plateau[i+1][(i0+1)-j].setidBateau(b.getID());                                
+                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0+1)-j].setidBateau(b.getID());                                
                           p[getCompteur()]=new Point(i,i0);
                           incrimentCompteur(); 
                         
