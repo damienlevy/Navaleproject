@@ -184,7 +184,7 @@ public class ModelClassique extends Jeu {
 		Bateau b =null;
 		String[] tabpoint = null;
 		Case[][] cas = new Case[11][11];
-		boolean boo = false;
+		boolean boo = false,boo1 = false;
 		Plateau p = null;
 		try {
 			
@@ -293,7 +293,12 @@ public class ModelClassique extends Jeu {
 							}else {
 								boo = false;
 							}
-							cas[comptx][compty] = new Case(Integer.parseInt(tabpoint[0]),boo);
+							if(tabpoint[2].equals("true")) {
+								boo1 = true;
+							}else {
+								boo1 = false;
+							}
+							cas[comptx][compty] = new Case(Integer.parseInt(tabpoint[0]),boo,boo1);
 							compty ++;
 							if(compty>10) {
 								comptx++;
@@ -405,7 +410,12 @@ public class ModelClassique extends Jeu {
 							}else {
 								boo = false;
 							}
-							cas[comptx][compty] = new Case(Integer.parseInt(tabpoint[0]),boo);
+							if(tabpoint[2].equals("true")) {
+								boo1 = true;
+							}else {
+								boo1 = false;
+							}
+							cas[comptx][compty] = new Case(Integer.parseInt(tabpoint[0]),boo,boo1);
 							compty ++;
 							if(compty>10) {
 								comptx++;
@@ -430,6 +440,11 @@ public class ModelClassique extends Jeu {
 			e.printStackTrace();
 		}
 		mc = new ModelClassique(factory, j1, ia);
+		for(Bateau baazaaa : mc.getBateauIA()) {
+			for(Point prout : baazaaa.getTouche()) {
+			System.out.println(prout.toString());
+			}
+		}
 		mc.save("testfinal");
 		
 		System.out.println("OKKKKKKK");

@@ -22,9 +22,10 @@ public class Case {
         this.idBateau = id ; 
     }
     
-    public Case(int id,boolean toucher){
+    public Case(int id,boolean toucher,boolean eau){
     	this.idBateau = id;
     	this.toucher = toucher;
+    	this.eau = eau;
     }
     
     public void toucher()
@@ -60,7 +61,7 @@ public class Case {
     
     public String toString(){
     	StringBuilder sb = new StringBuilder();
-    	sb.append(this.idBateau).append(",").append(this.toucher);
+    	sb.append(this.idBateau).append(",").append(this.toucher).append(",").append(this.eau);
     	return sb.toString(); 
     }
     
