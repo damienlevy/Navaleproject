@@ -50,4 +50,29 @@ public class AntiquiteFactory implements EpoqueFactory {
 		return "AntiquiteFactory";
 	}
 
+	@Override
+	public Bateau createBateau2(int id) {
+		return new BateauAntique2(id);
+	}
+
+	@Override
+	public Bateau createBateau3_1(int id) {
+		return new BateauAntique3_1(id);
+	}
+
+	@Override
+	public Bateau createBateau3_2(int id) {
+		return new BateauAntique3_2(id);
+	}
+
+	@Override
+	public Bateau createBateau4(int id) {
+		return new BateauAntique4(id);
+	}
+
+	@Override
+	public Bateau createBateau5(int id) {
+		return new BateauAntique5(id);
+	}
+
 }
