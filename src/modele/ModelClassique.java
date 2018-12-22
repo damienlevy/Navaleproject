@@ -106,7 +106,7 @@ public class ModelClassique extends Jeu {
 	public
 	void save() {
 		DAOFactoryCSV dao = (DAOFactoryCSV) DAOFactory.getInstance(0);
-		dao.getJEUDAO().save("test", this);
+		dao.getJEUDAO().save("sauvegarde_navale_project", this);
 	
 	}
 	void save(String nom) {

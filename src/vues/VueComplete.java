@@ -31,13 +31,15 @@ public class VueComplete extends JPanel implements GameVue {
     public final static int CaseY =20   ;
     public final VueAdversaire vueAdversaire;
     private final VuePerso perso;
+    private MenuSave save;
     private Controleur controleur;
     
     public VueComplete(Controleur c)
     {
     	controleur = c;
         this.vueAdversaire = new VueAdversaire(c);
-        this.perso = new VuePerso();     
+        this.perso = new VuePerso();    
+        this.save = new MenuSave(c);
         vueAdversaire.addMouseListener(new MouseAdapter(){
 
    @Override
@@ -59,6 +61,7 @@ public class VueComplete extends JPanel implements GameVue {
         Game.setLocationRelativeTo(null);
         Game.setSize(500,900);     
         Game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Game.setJMenuBar(save);
         
         JSplitPane GamePanes = new JSplitPane();
         GamePanes.setOrientation(JSplitPane.VERTICAL_SPLIT); 

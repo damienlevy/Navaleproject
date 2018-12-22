@@ -9,5 +9,6 @@ public interface Controleur {
 	public void start();
 	public void addVue(GameVue vue);
         public ModelClassique getModele();
+        public void save();
        
 }
