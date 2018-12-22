@@ -1,0 +1,18 @@
+@startuml
+package vues{
+class MenuSave
+class VueAdversaire implements GameVue
+class VueComplete implements GameVue
+class VuePerso implements GameVue 
+class VuePlacement implements GameVue
+interface GameVue{	
+void display();
+void update();   
+}
+}
+MenuSave--|> JMenuBar
+VueAdversaire --|> JPanel
+VueComplete--|> JPanel
+VuePerso--|> JPanel
+VuePlacement--|> JPanel
+@enduml

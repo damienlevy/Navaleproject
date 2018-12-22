@@ -1,0 +1,21 @@
+@startuml
+package dao{
+abstract class DAOFactory{
+static final int CSV
+DAOFactory getInstance(int)
+}
+class DAOFactoryCSV extends DAOFactory{
+static final DAOFactoryCSV instance
+static DAOFactory getInstance()
+static JeuDAO getJEUDAO()
+}
+Interface JeuDAO{
+void save(String name, ModelClassique jeu)
+Jeu load(String inputFileName)
+}
+class JeuDAOCSV implements JeuDAO{
+static JeuDAO getInstance()
+}
+
+}
+@enduml

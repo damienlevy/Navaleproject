@@ -1,0 +1,20 @@
+@startuml
+interface Vue
+package controleur
+{
+interface Controleur{
+start()
+addVue(GameVue)
+ModelClassique getModele()
+save()
+
+}
+class ControleurJeuClassique implements Controleur{
+notifyTirer(Point,Joueur)
+placerBateau(Point,Joueur)
+selectBateau(int,Joueur)
+}
+
+Controleur - "1" Jeu
+Controleur "1" - "*" Vue
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+package modele.bateau{
+interface Bateau{
+public int getID();
+	public List<Point> getPosition();
+	public void setPosition(List<Point> p);
+	public void touche(Point p);
+	public boolean estCoule();
+	public int getTaille();
+	public List<Point> getTouche();
+}
+class BateauModern2 extends Bateau2
+class BateauModern31 extends Bateau31
+class BateauModern32 extends Bateau32
+class BateauModern4 extends Bateau4
+class BateauModern5 extends Bateau5
+class BateauAntiquite2 extends Bateau2
+class BateauAntiquite31 extends Bateau31
+class BateauAntiquite32 extends Bateau32
+class BateauAntiquite4 extends Bateau4
+class BateauAntiquite5 extends Bateau5
+abstract class Bateau2 implements Bateau{
+int id;
+List<Point> coords;
+List<Point> touche;
+}
+abstract class Bateau31 implements Bateau
+{
+int id;
+List<Point> coords;
+List<Point> touche;
+}
+abstract class Bateau32 implements Bateau{
+int id;
+List<Point> coords;
+List<Point> touche;
+}
+abstract class Bateau4 implements Bateau{
+int id;
+List<Point> coords;
+List<Point> touche;
+}
+abstract class Bateau5 implements Bateau{
+int id;
+List<Point> coords;
+List<Point> touche;
+}
+}
+@enduml
