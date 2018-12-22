@@ -114,7 +114,7 @@ public class ControleurJeuxClassique implements Controleur {
 	@Override
 	public void save() {
 		this.model.save();
-		
+
 	}
 
 }

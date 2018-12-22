@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package vues;
 
 import java.awt.event.ActionEvent;
@@ -14,7 +12,7 @@ import javax.swing.JMenuItem;
 import controleur.Controleur;
 
 /**
- * @author damien
+ * @author levy54u
  *
  */
 public class MenuSave extends JMenuBar {
@@ -24,6 +22,7 @@ public class MenuSave extends JMenuBar {
 
 		JMenu file;
 		JMenuItem save;
+		
 
 		file = new JMenu("File");
 		save = new JMenuItem("Save");
@@ -35,7 +34,9 @@ public class MenuSave extends JMenuBar {
 				
 			}
 		});
+	
 		file.add(save);
+		
 		this.add(file);
 
 	}

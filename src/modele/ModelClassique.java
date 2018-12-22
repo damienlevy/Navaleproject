@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele;
 
 import java.awt.Point;
@@ -12,6 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import dao.DAOFactory;
 import dao.DAOFactoryCSV;
@@ -99,7 +97,7 @@ public class ModelClassique extends Jeu {
 	@Override
 	public
 	void finDePartie() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		
 	}
 
 	@Override
@@ -115,10 +113,12 @@ public class ModelClassique extends Jeu {
 	
 	}
 
-	@Override
-	public
-	void load() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	
+	public Jeu load() {
+		
+		/*DAOFactoryCSV dao =(DAOFactoryCSV) DAOFactory.getInstance(0);
+		return  dao.getJEUDAO().load();*/
+		return null;
 	}
 
 	public EpoqueFactory getEpoque()
@@ -148,24 +148,7 @@ public class ModelClassique extends Jeu {
 	
 	public static void main(String[] argv){
 		ModelClassique mc = new ModelClassique(new AntiquiteFactory());
-		int i = 1;
-		int j = 2;
-		
-		/*for(Bateau b : mc.getBateauJoueur1()) {	
-			System.out.println("OKKKKKKK");
-			i++;
-			j++;
-		ArrayList<Point> l = new ArrayList<Point>();
-		l.add(new Point(i,j));
-		i++;
-		l.add(new Point(i,j));
-		mc.placerBateau(b,l ,mc.getj1());
-		}
-		l = new ArrayList<>();
-		l.add(new Point(2, 3));
-		l.add(new Point(3, 3));
-		l.add(new Point(4, 3));
-		mc.placerBateau(mc.getBateauJoueur1().get(1),l ,mc.getj1());*/
+	
 		
 		mc.save();
 		
@@ -333,7 +316,7 @@ public class ModelClassique extends Jeu {
 					id = Integer.parseInt(line);
 					//System.out.println("id : "+id);
 					line = br.readLine();
-					System.out.println(line);
+					//System.out.println(line);
 					taille = Integer.parseInt(line);
 					if(taille == 2) {
 						b = factory.createBateau2(id);
@@ -442,12 +425,12 @@ public class ModelClassique extends Jeu {
 		mc = new ModelClassique(factory, j1, ia);
 		for(Bateau baazaaa : mc.getBateauIA()) {
 			for(Point prout : baazaaa.getTouche()) {
-			System.out.println(prout.toString());
+			//System.out.println(prout.toString());
 			}
 		}
 		mc.save("testfinal");
 		
-		System.out.println("OKKKKKKK");
+		//System.out.println("OKKKKKKK");
 		
 	}
 }

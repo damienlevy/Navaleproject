@@ -1,11 +1,7 @@
-/**
- * 
- */
 package modele.factory;
 
 import modele.bateau.Bateau;
 import modele.bateau.antiquite.*;
-
 
 /**
  * @author levy54u
@@ -14,6 +10,7 @@ import modele.bateau.antiquite.*;
 public class AntiquiteFactory implements EpoqueFactory {
 
 	private int id;
+
 	/**
 	 * 
 	 */
@@ -45,7 +42,7 @@ public class AntiquiteFactory implements EpoqueFactory {
 	public Bateau createBateau5() {
 		return new BateauAntique5(id++);
 	}
-	
+
 	public String toString() {
 		return "AntiquiteFactory";
 	}
