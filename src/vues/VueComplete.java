@@ -143,7 +143,7 @@ public class VueComplete extends JPanel implements GameVue {
                  if(position != -1){
                     Bateau b = controleur.getModele().getBateauJoueur1().get(nbBateau);
                      System.out.println("ok");
-                      if(position== 1)
+                      if(position== 1 && ((i)+b.getTaille())<=11)
                       {  System.out.println("ok");
                           for(int j=0 ;j<b.getTaille() ; j++)
                           {
@@ -157,11 +157,11 @@ public class VueComplete extends JPanel implements GameVue {
                 nbBateau++;
                          return true;
                       }
-                      if(position== 2 && ((i0+1)-b.getTaille())>0)
+                      if(position== 2 && ((i0+1)+b.getTaille())<=11)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
-                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0+1)-j].setidBateau(b.getID());                                
+                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0)+j].setidBateau(b.getID());                                
                           p[getCompteur()]=new Point(i,i0);
                           incrimentCompteur(); 
                         
@@ -170,7 +170,7 @@ public class VueComplete extends JPanel implements GameVue {
                          return true;
                          
                       }
-                       if(position== 3)
+                       if(position== 3 &&  i-b.getTaille()>=1)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
@@ -183,11 +183,11 @@ public class VueComplete extends JPanel implements GameVue {
                          return true;
                          
                       }
-                        if(position== 4)
+                        if(position== 4 && i0-b.getTaille()>=1)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
-                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0-1)+j].setidBateau(b.getID());                                
+                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0-1)-j].setidBateau(b.getID());                                
                           p[getCompteur()]=new Point(i,i0);
                           incrimentCompteur(); 
                         
