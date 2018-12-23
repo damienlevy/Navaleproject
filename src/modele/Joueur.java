@@ -51,7 +51,10 @@ public abstract class Joueur {
 			}
 		}
 	}
-
+        public void munitionLose()
+        {
+            this.munition -= 1;
+        }
 	public boolean munitionIsEmpty() {
 		boolean b = false;
 		if (this.munition == 0) {
@@ -59,7 +62,27 @@ public abstract class Joueur {
 		}
 		return b;
 	}
-
+        public boolean Lose()
+        {
+            if(munitionIsEmpty())
+                return true ;
+            for(int i= 0 ; i< 11 ;i++)
+            {
+               for(int j= 0 ; j< 11 ;j++)
+            {
+                if(!plateau.plateau[i][j].estTouche())
+                {
+                    
+                 return false ;   
+                }
+                else 
+                     return true ;
+            
+            }
+            }
+           return false ;
+        }
+      
 	public void placerBateau(Bateau b, List<Point> p) {
 		if (b.getPosition().size() != 0) {
 			ArrayList<Point> coords = (ArrayList<Point>) b.getPosition();

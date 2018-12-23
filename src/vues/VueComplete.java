@@ -38,13 +38,13 @@ public class VueComplete extends JPanel implements GameVue {
     private int position ;
     private boolean tire;
     private static int nbBateau = 0;
-    
+    private MenuSave save;
     public VueComplete(Controleur c)
     {
     	controleur = c;
         this.vueAdversaire = new VueAdversaire(c);
         this.perso = new VuePerso(c);  
-       
+       this.save = new MenuSave(c);
        ActionListennerPerso();
        
         vueAdversaire.addMouseListener(new MouseAdapter(){
@@ -66,6 +66,7 @@ public class VueComplete extends JPanel implements GameVue {
         Game.setLocationRelativeTo(null);
         Game.setSize(500,900);     
         Game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Game.setJMenuBar(save);
         tire=false;
         JSplitPane GamePanes = new JSplitPane();
         GamePanes.setOrientation(JSplitPane.VERTICAL_SPLIT); 
@@ -97,7 +98,9 @@ public class VueComplete extends JPanel implements GameVue {
          }
        
          tire=false;
+         controleur.getModele().getIa().munitionLose();
          verifPointTouche();
+          perso.repaint();
          
        
       
@@ -120,6 +123,8 @@ public class VueComplete extends JPanel implements GameVue {
          }
            p2 = controleur.getModele().getIa().tirerCroix(controleur.getModele().getPlateauJoueur1()) ;
          tire=true;
+         controleur.getModele().getj1().munitionLose();
+          perso.repaint();
   }
   
   void ActionListennerPerso()

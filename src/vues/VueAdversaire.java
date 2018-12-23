@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import modele.Case;
 import modele.ModelClassique;
+import modele.bateau.Bateau;
 import modele.factory.ModernFactory;
 
 
@@ -28,7 +29,7 @@ import modele.factory.ModernFactory;
  * @author TRABELSI
  */
 public class VueAdversaire extends JPanel implements GameVue {
-    public static Image back;
+     public static Image back;
     private final static int w = 400;
     private final static int h = 400;
     public final static int CaseX = 37;
@@ -40,7 +41,8 @@ public class VueAdversaire extends JPanel implements GameVue {
     private BufferedImage boat;
     private BufferedImage touche;
     private BufferedImage cercle;
-    
+    private Controleur c ;
+    private BufferedImage Lose;
     public VueAdversaire (Controleur c)
     {
 
@@ -71,7 +73,7 @@ public class VueAdversaire extends JPanel implements GameVue {
         Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
         touche = ImageIO.read(new File("./src/vues/images/touche.png"));
         cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));
-        
+        BufferedImage win = ImageIO.read(new File("./src/vues/images/win.jpg"));
         for( int i=0 ; i <= (w/CaseX); i++ )
         {
             
@@ -134,13 +136,37 @@ public class VueAdversaire extends JPanel implements GameVue {
                  
             }
         }
-        
-        
-      
+         Lose = ImageIO.read(new File("./src/vues/images/Lose.jpg"));
+        if(model.getIa().Lose())
+                 {
+                     g.drawRect(0,0,w,h);
+                     g.drawImage(Lose,0,0,w,h,this);
+                 } 
+       if(winIA())
+                 {
+                     g.drawRect(0,0,w,h);
+                     g.drawImage(win,0,0,w,h,this);
+                 } 
     } catch (IOException ex) {
         Logger.getLogger(VueAdversaire.class.getName()).log(Level.SEVERE, null, ex);
     }
     
 }
-  
+   public boolean winIA()
+        {
+           int coule =0;
+            for(int i=0;i<11;i++)
+            {
+                for(int j=0; j<11 ;j++)
+                {
+                    if(model.getPlateauJoueur1().plateau[i][j].estTouche() && model.getPlateauJoueur1().plateau[i][j].getidBateau()>0)
+                            coule++;
+                        }
+                
+            }
+            if(coule==17)
+               return true;
+           else return false;
+            
+        }
 }

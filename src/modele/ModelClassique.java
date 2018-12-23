@@ -101,12 +101,13 @@ public class ModelClassique extends Jeu {
 	}
 
 	@Override
-	public void save() {
+	public
+	void save() {
 		DAOFactoryCSV dao = (DAOFactoryCSV) DAOFactory.getInstance(0);
 		dao.getJEUDAO().save("sauvegarde_navale_project", this);
 	
 	}
-	public void save(String nom) {
+	void save(String nom) {
 		DAOFactoryCSV dao = (DAOFactoryCSV) DAOFactory.getInstance(0);
 		dao.getJEUDAO().save(nom, this);
 	
@@ -432,4 +433,5 @@ public class ModelClassique extends Jeu {
 		//System.out.println("OKKKKKKK");
 		
 	}
+       
 }
