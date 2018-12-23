@@ -1,0 +1,90 @@
+@startuml
+package modele{
+class Case {
+private boolean toucher;
+private boolean eau;
+private int idBateau;
+public Case(int id)
+public Case(int id, boolean toucher, boolean eau)
+public void toucher()
+public boolean estTouche()
+public boolean estEau()
+public void setEautouche()
+public int getidBateau()
+public void setidBateau(int id)
+public boolean isToucher()
+}
+
+abstract class Joueur{
+public int munition
+public Joueur(int munition, List<Bateau> b)
+public Joueur(int munition, List<Bateau> b, Plateau p)
+public int getMunition()
+public void tirer(Point p)
+public boolean munitionIsEmpty()
+public void placerBateau(Bateau b, List<Point> p)
+public Plateau getPlateau()
+public List<Bateau> getBateau()
+public String getType()
+}
+class Humain extends Joueur
+class IA extends Joueur{
+private List<Point> p ;
+public Point tirerRandom(Plateau p)
+public Point tirerCroix(Plateau p)
+public void setPositionBateau(Bateau b, ArrayList<Point> position)
+public void placerBateaux()
+}
+class Plateau{
+public static final int Width
+public static final int Height
+public Plateau()
+public Plateau(Case[][] plateau)
+public final void initialiser()
+public Case[][] getPlateau()
+public void libererCase(Point p)
+public void setPlateau(Case[][] plateau)
+public Case getCase(Point p)
+public Case getCase(int x, int y)
+public boolean estVide(Case c)
+public boolean estVide(Point p) 
+public boolean positionVide(List<Point> p)
+public void allocatePosition(int id, List<Point> p)
+public void afficherPlateau()
+}
+abstract class Jeu{
+ArrayList<GameVue> vues
+public void addVue(GameVue v)
+public Jeu(EpoqueFactory epoque)
+public abstract void jouer()
+public abstract void finDePartie()
+public abstract void save()
+public abstract Jeu load()
+public void placerBateau(Bateau bateau, ArrayList<Point> p, Joueur j)
+}
+class ModelClassique extends Jeu {
+
+public List<Bateau> getBateau(Joueur j)
+public Plateau getPlateauJoueur1() 
+public Plateau getPlateauIA() 
+public void save()
+public EpoqueFactory getEpoque()
+public void tirer(Point c, Joueur j)
+private Joueur getOtherJoueur(Joueur j)
+public String typeJoueur(Joueur j)
+public Joueur getj1()
+public Joueur getIa()
+}
+package factory{
+interface EpoqueFactory
+}
+package bateau{
+interface Bateau
+}
+Joueur --"*"Bateau
+Joueur--"1"Plateau
+Plateau--"*"Case
+Jeu--"1"EpoqueFactory
+ModelClassique--"2"Joueur
+}
+@enduml

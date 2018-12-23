@@ -39,6 +39,8 @@ public class VuePerso extends JPanel implements GameVue {
         private  static boolean draw;
         private int taille;
     private BufferedImage boat;
+    private BufferedImage touche;
+    private BufferedImage cercle;
         
         
 	public VuePerso(Controleur c )
@@ -79,6 +81,8 @@ public class VuePerso extends JPanel implements GameVue {
                              no = ImageIO.read(new File("./src/vues/images/no.png"));
 			check = ImageIO.read(new File("./src/vues/images/checkp.png"));
                         boat = ImageIO.read(new File("./src/vues/images/boat.png"));
+                          touche = ImageIO.read(new File("./src/vues/images/touche.png"));
+        cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));        
 			Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
 			for( int i=0 ; i <= (w/CaseX); i++ )
 			{
@@ -151,6 +155,28 @@ public class VuePerso extends JPanel implements GameVue {
                  }
                            
                         }
+              for(int i1 = 1; i1< 11 ; i1++)     
+        {
+            for(int j=1; j < 11 ; j++)
+            {
+                 if(c.getModele().getPlateauJoueur1().plateau[i1][j].getidBateau() >= 1)
+                     
+                 {
+            if(c.getModele().getPlateauJoueur1().plateau[i1][j].estTouche())
+                 {
+                     
+                        g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
+                        g.drawImage(touche,i1*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+                 }}
+           if(!c.getModele().getPlateauJoueur1().plateau[i1][j].estEau())
+                 {
+                     
+                        g.drawRect(i*CaseX,j*CaseY,CaseX,CaseY);
+                        g.drawImage(cercle,i1*CaseX,j*CaseY,CaseX-1,CaseY-1,this); 
+                 
+        }
+                }
+        }
         }
                 }
 
@@ -190,5 +216,9 @@ public class VuePerso extends JPanel implements GameVue {
       if(place.y-1 ==p.y && place.x==p.x)
           return 4;
          return -1; 
+    }
+
+    void drawP(Point p2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

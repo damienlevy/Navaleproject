@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.List;
 import modele.Case;
+import modele.Joueur;
+import modele.Plateau;
 import modele.bateau.Bateau;
 
 /**
@@ -34,6 +36,7 @@ public class VueComplete extends JPanel implements GameVue {
     private static int compteur =0;
     private static boolean first =true;
     private int position ;
+    private boolean tire;
     private static int nbBateau = 0;
     
     public VueComplete(Controleur c)
@@ -41,15 +44,18 @@ public class VueComplete extends JPanel implements GameVue {
     	controleur = c;
         this.vueAdversaire = new VueAdversaire(c);
         this.perso = new VuePerso(c);  
-        
+       
+       ActionListennerPerso();
+       
         vueAdversaire.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
-
+ if(tire== true){
                        chercherCase(e.getX()/37, e.getY()/37);
+                       vueAdversaire.repaint();}
              }
         });
-       ActionListennerPerso();
+    
     }
 
     @Override
@@ -60,7 +66,7 @@ public class VueComplete extends JPanel implements GameVue {
         Game.setLocationRelativeTo(null);
         Game.setSize(500,900);     
         Game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        tire=false;
         JSplitPane GamePanes = new JSplitPane();
         GamePanes.setOrientation(JSplitPane.VERTICAL_SPLIT); 
         GamePanes.setDividerLocation(420);    
@@ -80,17 +86,42 @@ public class VueComplete extends JPanel implements GameVue {
     }
   public void chercherCase(int x, int y) {
          Point p = new Point(x,y);
-    
+       
          if( this.vueAdversaire.model.getPlateauIA().plateau[x][y].getidBateau() > 0)
          { this.vueAdversaire.model.getPlateauIA().plateau[x][y].toucher();  
          
          }
          else 
-                this.vueAdversaire.model.getPlateauIA().plateau[x][y].setEautouche();
+         { this.vueAdversaire.model.getPlateauIA().plateau[x][y].setEautouche();
          
-         this.vueAdversaire.repaint();
+         }
+       
+         tire=false;
+         verifPointTouche();
+         
+       
       
     }
+  void verifPointTouche()
+  {
+       Point p2 = controleur.getModele().getIa().tirerCroix(controleur.getModele().getPlateauJoueur1()) ;
+      
+       if(controleur.getModele().getPlateauJoueur1().plateau[p2.x][p2.y].getidBateau() > 0)
+         {
+             controleur.getModele().getPlateauJoueur1().plateau[p2.x][p2.y].toucher();  
+              System.out.println("POINT ALEATPORE // "+p2 +" id bateau :" +controleur.getModele().getPlateauJoueur1().plateau[p2.x][p2.y].getidBateau()+"touche "+controleur.getModele().getPlateauJoueur1().plateau[p2.x][p2.y].estTouche() );
+             perso.repaint();
+         
+         }
+         else 
+         { controleur.getModele().getPlateauJoueur1().plateau[p2.x][p2.y].setEautouche();
+         
+          perso.repaint();
+         }
+           p2 = controleur.getModele().getIa().tirerCroix(controleur.getModele().getPlateauJoueur1()) ;
+         tire=true;
+  }
+  
   void ActionListennerPerso()
   {
       perso.addMouseListener(new MouseAdapter(){
@@ -119,7 +150,8 @@ public class VueComplete extends JPanel implements GameVue {
                   
             
               perso.repaint();
-              
+              if(nbBateau>4)
+                  tire=true;
             
             }
             
@@ -157,11 +189,11 @@ public class VueComplete extends JPanel implements GameVue {
                 nbBateau++;
                          return true;
                       }
-                      if(position== 2 && ((i0+1)+b.getTaille())<=11)
+                      if(position== 2 && ((i0)+b.getTaille())<=11)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
-                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0)+j].setidBateau(b.getID());                                
+                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0-1)+j].setidBateau(b.getID());                                
                           p[getCompteur()]=new Point(i,i0);
                           incrimentCompteur(); 
                         
@@ -170,7 +202,7 @@ public class VueComplete extends JPanel implements GameVue {
                          return true;
                          
                       }
-                       if(position== 3 &&  i-b.getTaille()>=1)
+                       if(position== 3 &&  i-b.getTaille()>=0)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
@@ -183,11 +215,11 @@ public class VueComplete extends JPanel implements GameVue {
                          return true;
                          
                       }
-                        if(position== 4 && i0-b.getTaille()>=1)
+                        if(position== 4 && i0-b.getTaille()>=0)
                       {  System.out.println("ok");
                           for(int j=0 ; j<b.getTaille() ; j++)
                           {
-                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0-1)-j].setidBateau(b.getID());                                
+                          controleur.getModele().getPlateauJoueur1().plateau[i][(i0+1)-j].setidBateau(b.getID());                                
                           p[getCompteur()]=new Point(i,i0);
                           incrimentCompteur(); 
                         

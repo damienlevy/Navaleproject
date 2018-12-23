@@ -29,9 +29,9 @@ public abstract class Jeu {
 	}
 
 	public void notifyVue() {
-		for (GameVue v : vues) {
+		/*for (GameVue v : vues) {
 			v.update();
-		}
+		}*/
 	}
 
 	public abstract void jouer(); // lancer le jeu
