@@ -28,7 +28,7 @@ import modele.factory.ModernFactory;
  * @author TRABELSI
  */
 public class VueAdversaire extends JPanel implements GameVue {
-     public static Image back;
+    public static Image back;
     private final static int w = 400;
     private final static int h = 400;
     public final static int CaseX = 37;
