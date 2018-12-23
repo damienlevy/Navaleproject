@@ -9,10 +9,13 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import modele.bateau.Bateau;
 import static vues.VueAdversaire.CaseX;
 import static vues.VueAdversaire.CaseY;
 import static vues.VueAdversaire.back;
@@ -38,9 +41,11 @@ public class VuePerso extends JPanel implements GameVue {
         private Point place ;
         private  static boolean draw;
         private int taille;
-    private BufferedImage boat;
-    private BufferedImage touche;
-    private BufferedImage cercle;
+        private BufferedImage boat;
+        private BufferedImage touche;
+        private BufferedImage cercle;
+    private BufferedImage Lose;
+    private BufferedImage win;
         
         
 	public VuePerso(Controleur c )
@@ -78,11 +83,13 @@ public class VuePerso extends JPanel implements GameVue {
 			back = ImageIO.read(new File("./src/vues/images/back.jpg"));
 			para = ImageIO.read(new File("./src/vues/images/para.jpg"));
 			bateau = ImageIO.read(new File("./src/vues/images/bateau.png"));
-                             no = ImageIO.read(new File("./src/vues/images/no.png"));
+                        no = ImageIO.read(new File("./src/vues/images/no.png"));
 			check = ImageIO.read(new File("./src/vues/images/checkp.png"));
                         boat = ImageIO.read(new File("./src/vues/images/boat.png"));
-                          touche = ImageIO.read(new File("./src/vues/images/touche.png"));
-        cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));        
+                        touche = ImageIO.read(new File("./src/vues/images/touche.png"));
+                         win = ImageIO.read(new File("./src/vues/images/win.jpg"));
+                        Lose = ImageIO.read(new File("./src/vues/images/Lose.jpg"));
+                        cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));        
 			Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
 			for( int i=0 ; i <= (w/CaseX); i++ )
 			{
@@ -178,6 +185,19 @@ public class VuePerso extends JPanel implements GameVue {
                 }
         }
         }
+                            /************************Tester LOSE/*****************/
+                 if(c.getModele().getj1().Lose() )
+                 {
+                     g.drawRect(0,0,w,h);
+                     g.drawImage(Lose,0,0,w,h,this);
+                 } 
+                
+               
+                  if(winJ())
+                 {
+                     g.drawRect(0,0,w,h);
+                     g.drawImage(win,0,0,w,h,this);
+                 } 
                 }
 
 		 catch (IOException ex) {
@@ -221,4 +241,22 @@ public class VuePerso extends JPanel implements GameVue {
     void drawP(Point p2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+      
+            public boolean winJ()
+        {
+            int coule =0;
+            for(int i=0;i<11;i++)
+            {
+                for(int j=0; j<11 ;j++)
+                {
+                    if(c.getModele().getPlateauIA().plateau[i][j].estTouche() && c.getModele().getPlateauIA().plateau[i][j].getidBateau()>0)
+                            coule++;
+                        }
+                
+            }
+            if(coule==17)
+               return true;
+           else return false;
+            
+        }
 }
