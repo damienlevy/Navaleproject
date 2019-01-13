@@ -66,14 +66,14 @@ public class VueAdversaire extends JPanel implements GameVue {
         super.paintComponent(g);
    
     try {
-        back = ImageIO.read(new File("./src/vues/images/back.jpg"));
-        para = ImageIO.read(new File("./src/vues/images/para.jpg"));
-        bat = ImageIO.read(new File("./src/vues/images/bateau.png"));
-        boat = ImageIO.read(new File("./src/vues/images/boat.png"));
+        back = ImageIO.read(getClass().getResourceAsStream("images/back.jpg"));
+        para = ImageIO.read(VueAdversaire.class.getResource("para.jpg"));
+        bat = ImageIO.read(getClass().getResourceAsStream("images/bateau.png"));
+        boat = ImageIO.read(getClass().getResourceAsStream("images/boat.png"));
         Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
-        touche = ImageIO.read(new File("./src/vues/images/touche.png"));
-        cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));
-        BufferedImage win = ImageIO.read(new File("./src/vues/images/win.jpg"));
+        touche = ImageIO.read(getClass().getResourceAsStream("images/touche.png"));
+        cercle = ImageIO.read(getClass().getResourceAsStream("images/cercle.png"));
+        BufferedImage win = ImageIO.read(getClass().getResourceAsStream("images/win.jpg"));
         for( int i=0 ; i <= (w/CaseX); i++ )
         {
             
@@ -136,7 +136,7 @@ public class VueAdversaire extends JPanel implements GameVue {
                  
             }
         }
-         Lose = ImageIO.read(new File("./src/vues/images/Lose.jpg"));
+         Lose = ImageIO.read(getClass().getResourceAsStream("images/Lose.jpg"));
         if(model.getIa().Lose())
                  {
                      g.drawRect(0,0,w,h);
