@@ -35,9 +35,9 @@ public class VuePlacement extends JPanel implements GameVue{
 	{
 		controleur = c;
 		try {
-			back = ImageIO.read(new File("./src/vues/images/back.jpg"));
-			para = ImageIO.read(new File("./src/vues/images/para.jpg"));
-			bateau = ImageIO.read(new File("./src/vues/images/bateau.png"));
+			back = ImageIO.read(getClass().getResourceAsStream("images/back.jpg"));
+			para = ImageIO.read(getClass().getResourceAsStream("images/para.jpg"));
+			bateau = ImageIO.read(getClass().getResourceAsStream("images/bateau.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

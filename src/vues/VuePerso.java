@@ -44,8 +44,8 @@ public class VuePerso extends JPanel implements GameVue {
         private BufferedImage boat;
         private BufferedImage touche;
         private BufferedImage cercle;
-    private BufferedImage Lose;
-    private BufferedImage win;
+       private BufferedImage Lose;
+          private BufferedImage win;
         
         
 	public VuePerso(Controleur c )
@@ -63,10 +63,10 @@ public class VuePerso extends JPanel implements GameVue {
 		draw = false ;
                 this.fleches=new BufferedImage[4];
             try {
-                fleches[0] = ImageIO.read(new File("./src/vues/images/fleche1.png"));
-                fleches[1] = ImageIO.read(new File("./src/vues/images/fleche2.png"));
-                fleches[2] = ImageIO.read(new File("./src/vues/images/fleche3.png"));
-                fleches[3] = ImageIO.read(new File("./src/vues/images/fleche4.png"));
+                fleches[0] = ImageIO.read(getClass().getResourceAsStream("images/fleche1.png"));
+                fleches[1] = ImageIO.read(getClass().getResourceAsStream("images/fleche2.png"));
+                fleches[2] = ImageIO.read(getClass().getResourceAsStream("images/fleche3.png"));
+                fleches[3] = ImageIO.read(getClass().getResourceAsStream("images/fleche4.png"));
             } catch (IOException ex) {
                 Logger.getLogger(VuePerso.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -80,16 +80,16 @@ public class VuePerso extends JPanel implements GameVue {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		try {
-			back = ImageIO.read(new File("./src/vues/images/back.jpg"));
-			para = ImageIO.read(new File("./src/vues/images/para.jpg"));
-			bateau = ImageIO.read(new File("./src/vues/images/bateau.png"));
-                        no = ImageIO.read(new File("./src/vues/images/no.png"));
-			check = ImageIO.read(new File("./src/vues/images/checkp.png"));
-                        boat = ImageIO.read(new File("./src/vues/images/boat.png"));
-                        touche = ImageIO.read(new File("./src/vues/images/touche.png"));
-                         win = ImageIO.read(new File("./src/vues/images/win.jpg"));
-                        Lose = ImageIO.read(new File("./src/vues/images/Lose.jpg"));
-                        cercle = ImageIO.read(new File("./src/vues/images/cercle.png"));        
+			back = ImageIO.read(getClass().getResourceAsStream("images/back.jpg"));
+			para = ImageIO.read(getClass().getResourceAsStream("images/para.jpg"));
+			bateau = ImageIO.read(getClass().getResourceAsStream("images/bateau.png"));
+                        no = ImageIO.read(getClass().getResourceAsStream("images/no.png"));
+			check = ImageIO.read(getClass().getResourceAsStream("images/boat.png"));
+                        boat = ImageIO.read(getClass().getResourceAsStream("images/boat.png"));
+                        touche = ImageIO.read(getClass().getResourceAsStream("images/touche.png"));
+                         win = ImageIO.read(getClass().getResourceAsStream("images/win.jpg"));
+                        Lose = ImageIO.read(getClass().getResourceAsStream("images/Lose.jpg"));
+                        cercle = ImageIO.read(getClass().getResourceAsStream("images/cercle.png"));        
 			Font font = new Font( "Rockwell Extra Bold", Font.PLAIN, 20 );
 			for( int i=0 ; i <= (w/CaseX); i++ )
 			{

@@ -46,7 +46,7 @@ public class VueComplete extends JPanel implements GameVue {
         this.perso = new VuePerso(c);  
        this.save = new MenuSave(c);
        ActionListennerPerso();
-       
+       perso.repaint();
         vueAdversaire.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -77,7 +77,9 @@ public class VueComplete extends JPanel implements GameVue {
          GamePanes.setTopComponent(perso);  
          //afficher plateau 2
          GamePanes.setBottomComponent(vueAdversaire);
-      
+       Game.getContentPane().add(GamePanes);
+        /*Game.getContentPane().add(perso);
+        Game.getContentPane().add(vueAdversaire);*/
         Game.setVisible(true);
     }
 
